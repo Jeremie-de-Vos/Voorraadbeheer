@@ -14,6 +14,9 @@ namespace Voorraadbeheer_Grafische
     public partial class Login : Form
     {
         public static Login frm;
+        private int Maxlogintry = 3;
+        private int Currlogintry = 1;
+
         public Login()
         {
             InitializeComponent();
@@ -47,6 +50,7 @@ namespace Voorraadbeheer_Grafische
         }
         public void CheckLogin()
         {
+            bool tst = true;
             for (int i = 0; i < DATA.Medewerkers.Count; i++)
             {
                 //Check login naam + wachtwoord
@@ -68,10 +72,20 @@ namespace Voorraadbeheer_Grafische
                         MessageBox.Show("Magazijn");
                     }
                 }
-                //Check Login Naam
-                else 
-                    Warning_lbl.Text = "Geen juiste combinatie!";
-
+                else
+                    tst = false;
+            }
+            if (Currlogintry >= Maxlogintry+1 && !tst)
+            {
+                MessageBox.Show("Wachtwoord fout.\nEr is te vaak geprobeerd in te loggen");
+                Environment.Exit(0);
+            }
+            else
+            {
+                Currlogintry++;
+                Warning_lbl.Text = "Geen juiste combinatie! U kunt nog (" + (Maxlogintry - Currlogintry + 1) + ") keer proberen";
+                Naam_txt.Text = null;
+                Wachtwoor_txt.Text = null;
             }
         }
 

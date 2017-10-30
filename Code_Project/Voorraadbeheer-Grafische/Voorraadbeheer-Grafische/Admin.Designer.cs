@@ -84,6 +84,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CompanyLogo_pb = new System.Windows.Forms.PictureBox();
             this.Close_btn = new System.Windows.Forms.Button();
+            this.Delete_Medew_Acc = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.Werknemer_tab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Werknemers)).BeginInit();
@@ -141,6 +142,7 @@
             // 
             // Werknemer_tab
             // 
+            this.Werknemer_tab.Controls.Add(this.Delete_Medew_Acc);
             this.Werknemer_tab.Controls.Add(this.Wijzig_btn);
             this.Werknemer_tab.Controls.Add(this.New_Acc_btn);
             this.Werknemer_tab.Controls.Add(this.Wachtwoord_lbl);
@@ -644,6 +646,17 @@
             this.Close_btn.UseVisualStyleBackColor = true;
             this.Close_btn.Click += new System.EventHandler(this.Close_btn_Click);
             // 
+            // Delete_Medew_Acc
+            // 
+            this.Delete_Medew_Acc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Delete_Medew_Acc.Location = new System.Drawing.Point(0, 394);
+            this.Delete_Medew_Acc.Name = "Delete_Medew_Acc";
+            this.Delete_Medew_Acc.Size = new System.Drawing.Size(70, 31);
+            this.Delete_Medew_Acc.TabIndex = 28;
+            this.Delete_Medew_Acc.Text = "Delete";
+            this.Delete_Medew_Acc.UseVisualStyleBackColor = true;
+            this.Delete_Medew_Acc.Click += new System.EventHandler(this.Delete_Medew_Acc_Click);
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -738,5 +751,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Tel_colum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Functie_colum;
         private System.Windows.Forms.Button Wijzig_btn;
+        private System.Windows.Forms.Button Delete_Medew_Acc;
     }
 }

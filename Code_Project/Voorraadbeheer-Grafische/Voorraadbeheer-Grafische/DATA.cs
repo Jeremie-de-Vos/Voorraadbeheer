@@ -53,7 +53,7 @@ namespace Voorraadbeheer_Grafische
                 return Functie.error;
         }
 
-        ///====================================<Hardcoded-data>================================================================================
+        //-------------<Hardcoded>---------------------
         public static void Art_Rawdata()
         {
             Artikellen.Add(new Artikel(1, "Naam1", "Merk", Categorie.Straat, 40, 21, 10, 41, 41, "Maat", 500, "Laatst Gewijzigd", "Gewijzigd door"));
@@ -76,7 +76,7 @@ namespace Voorraadbeheer_Grafische
             Medewerkers.Add(new Medewerker(6, "Naam6", "Achternaam", ".@gmail.com", "Gelacht", Functie.Magazijn, "LoginNaam", "Wachtwoord", "img path", 0681701360, "AanmaakDatum", "LaatstIngelogd", "LaatsteVersie"));
         }
 
-        ///====================================<Save-Load>=====================================================================================
+        //-------------<Save - Load>---------------------
         //Save - load everything
         public static void Save_all()
         {
@@ -214,7 +214,7 @@ namespace Voorraadbeheer_Grafische
         }
     }
 }
-///====================================<Lists>===========================================================================================
+//------------------------<Lists>----------------------------------
 //Medewerkers
 public enum Functie
 {

@@ -12,10 +12,8 @@ namespace Voorraadbeheer_Grafische
 {
     public partial class Admin : Form
     {
-        //Variable
+        //Variable-Main
         public static int ID;
-
-        //Main
         public Admin(int Id)
         {
             InitializeComponent();
@@ -38,6 +36,7 @@ namespace Voorraadbeheer_Grafische
         }
         private void Datagrid_Setup()
         {
+            Searchbar_txt.Text = null;
             DataGrid_Werknemers.Rows.Clear();
             for (int i = 0; i < DATA.Medewerkers.Count; i++)
                 DataGrid_Werknemers.Rows.Add(
@@ -66,21 +65,26 @@ namespace Voorraadbeheer_Grafische
         //Search
         private void Search()
         {
+            
             string search_txt = Searchbar_txt.Text.ToLower();
 
             if (tabControl.SelectedIndex == 0)
             {
+                DataGrid_Werknemers.Rows.Clear();
                 String searchValue = search_txt;
-                int rowIndex = -1;
-                foreach (DataGridViewRow row in DataGrid_Werknemers.Rows)
-                {
-                    if (row.Cells[1].Value.ToString().ToLower().Contains(searchValue))
+
+                for (int i = 0; i < DATA.Medewerkers.Count; i++)
+                    if (DATA.Medewerkers[i].Naam.ToLower().Contains(searchValue))
                     {
-                        rowIndex = row.Index;
-                        DataGrid_Werknemers.Rows[rowIndex].Selected = true;
-                        break;
+                        DataGrid_Werknemers.Rows.Add(
+                        DATA.Medewerkers[i].ID,
+                        DATA.Medewerkers[i].Naam,
+                        DATA.Medewerkers[i].Achternaam,
+                        DATA.Medewerkers[i].Email,
+                        DATA.Medewerkers[i].Telnr,
+                        DATA.Medewerkers[i].Functie.ToString());
                     }
-                }
+                DataGrid_Werknemers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             }
         }
         private void Search_btn_Click(object sender, EventArgs e)
@@ -106,13 +110,16 @@ namespace Voorraadbeheer_Grafische
         }
         private void DataGrid_Werknemers_SelectionChanged(object sender, EventArgs e)
         {
-            string id = DataGrid_Werknemers.SelectedCells[0].Value.ToString();
-            int ID = Int32.Parse(id);
-            DATA.SelectedID = ID;
-            StaticInfo_Setup(ID);
+            if (DataGrid_Werknemers.RowCount <= -1)
+            {
+                string id = DataGrid_Werknemers.SelectedCells[0].Value.ToString();
+                int ID = Int32.Parse(id);
+                DATA.SelectedID = ID;
+                StaticInfo_Setup(ID);
+            }
         }
 
-        //Nieuw Account - Wijzigen werknemers
+        //Nieuw Account - Wijzigen werknemers - Delete Account
         private void New_Acc_btn_Click(object sender, EventArgs e)
         {
             Add_Change_Medewerker frm1 = new Add_Change_Medewerker(this,Function.Nieuw, ID);
@@ -124,6 +131,25 @@ namespace Voorraadbeheer_Grafische
             Add_Change_Medewerker frm1 = new Add_Change_Medewerker(this, Function.Wijzig, ID);
             frm1.Show();
             this.Hide();
+        }
+        private void Delete_Medew_Acc_Click(object sender, EventArgs e)
+        {
+            DialogResult dr;
+            dr = MessageBox.Show("Wil je dit account echt verwijderen?", "Confirm", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                string id = DataGrid_Werknemers.SelectedCells[0].Value.ToString();
+                int ID = Int32.Parse(id);
+                DATA.SelectedID = ID;
+
+
+                for (int i = 0; i < DATA.Medewerkers.Count; i++)
+                    if (DATA.Medewerkers[i].ID == ID)
+                    {
+                        DATA.Medewerkers.Remove(DATA.Medewerkers[i]);
+                        Datagrid_Setup();
+                    }
+            }
         }
     }
 }
