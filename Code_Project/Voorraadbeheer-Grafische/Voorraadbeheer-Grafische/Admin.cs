@@ -23,29 +23,6 @@ namespace Voorraadbeheer_Grafische
 
             account_Setup();
             Datagrid_Setup();
-
-            Werknemer_Wijzig_cb.SelectedIndex = 0;
-        }
-
-        //General-Events
-        private void Close_btn_Click(object sender, EventArgs e)
-        {
-            Environment.Exit(0);
-        }
-        private void DataGrid_Werknemers_SelectionChanged(object sender, EventArgs e)
-        {
-            string id = DataGrid_Werknemers.SelectedCells[0].Value.ToString();
-            int ID = Int32.Parse(id);
-            DATA.SelectedID = ID;
-            StaticInfo_Setup(ID);
-        }
-
-        //Nieuw Account
-        private void New_Acc_btn_Click(object sender, EventArgs e)
-        {
-            Add_Change_Medewerker frm1 = new Add_Change_Medewerker(this,Function.Nieuw, ID);
-            frm1.Show();
-            this.Hide();
         }
 
         //Setup
@@ -59,7 +36,7 @@ namespace Voorraadbeheer_Grafische
                     DATA.Medewerkers[i].LaatstVersie = "Grafische";
                 }
         }
-        public void Datagrid_Setup()
+        private void Datagrid_Setup()
         {
             DataGrid_Werknemers.Rows.Clear();
             for (int i = 0; i < DATA.Medewerkers.Count; i++)
@@ -100,7 +77,6 @@ namespace Voorraadbeheer_Grafische
                     if (row.Cells[1].Value.ToString().ToLower().Contains(searchValue))
                     {
                         rowIndex = row.Index;
-                        MessageBox.Show(rowIndex.ToString());
                         DataGrid_Werknemers.Rows[rowIndex].Selected = true;
                         break;
                     }
@@ -118,102 +94,34 @@ namespace Voorraadbeheer_Grafische
                 Search();
             }
         }
-
-        //Wijzigen werknemers
-        string id_naam;
-        string wijziging;
-        string voorheen;
-        string naar;
-
-        private void Werknemer_Wijzig_cb_SelectedIndexChanged(object sender, EventArgs e)
+        private void Searchbar_txt_TextChanged(object sender, EventArgs e)
         {
-            string caseSwitch = Werknemer_Wijzig_cb.Text;
-            switch (caseSwitch)
-            {
-                case "None":
-                    Wijzig_txt.Visible = false;
-                    WijzigSomething_cb.Visible = false;
-                    break;
-                case "Wachtwoord":
-                    Wijzig_txt.Visible = true;
-                    WijzigSomething_cb.Visible = false;
-                    break;
-                case "Login naam":
-                    Wijzig_txt.Visible = true;
-                    WijzigSomething_cb.Visible = false;
-                    break;
-                case "Achternaam":
-                    Wijzig_txt.Visible = true;
-                    WijzigSomething_cb.Visible = false;
-                    break;
-                case "Functie":
-                    Wijzig_txt.Visible = false;
-                    WijzigSomething_cb.Visible = true;
-                    break;
-                case "Naam":
-                    Wijzig_txt.Visible = true;
-                    WijzigSomething_cb.Visible = false;
-                    break;
-                case "Email":
-                    Wijzig_txt.Visible = true;
-                    WijzigSomething_cb.Visible = false;
-                    break;
-                case "Tel":
-                    Wijzig_txt.Visible = true;
-                    WijzigSomething_cb.Visible = false;
-                    break;
-            }
+            Search();
         }
-        private void Weknemers_Apply_btn_Click(object sender, EventArgs e)
+
+        //General-Events
+        private void Close_btn_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+        private void DataGrid_Werknemers_SelectionChanged(object sender, EventArgs e)
         {
             string id = DataGrid_Werknemers.SelectedCells[0].Value.ToString();
-            int ID;
-            Int32.TryParse(id, out ID);
-
-            for (int i = 0; i < DATA.Medewerkers.Count; i++)
-                if (DATA.Medewerkers[i].ID == ID)
-                {
-                    id_naam = DATA.Medewerkers[i].ID + "-" + DATA.Medewerkers[i].Naam;
-                    wijziging = Werknemer_Wijzig_cb.Text;
-                    //voorheen?
-                    string caseSwitch = Werknemer_Wijzig_cb.Text;
-                    switch (caseSwitch)
-                    {
-                        case "None":
-                            break;
-                        case "Wachtwoord":
-                            naar = Wijzig_txt.Text;
-                            break;
-                        case "Login naam":
-                            naar = Wijzig_txt.Text;
-                            break;
-                        case "Achternaam":
-                            naar = Wijzig_txt.Text;
-                            break;
-                        case "Functie":
-                            naar = Werknemer_Wijzig_cb.Text;
-                            break;
-                        case "Naam":
-                            naar = Wijzig_txt.Text;
-                            break;
-                        case "Email":
-                            naar = Wijzig_txt.Text;
-                            break;
-                        case "Tel":
-                            naar = Wijzig_txt.Text;
-                            break;
-                    }
-                }
-
-            Confirmation frm = new Confirmation(this,id_naam,wijziging,voorheen,naar);
-            frm.Show();
-            this.Hide();
+            int ID = Int32.Parse(id);
+            DATA.SelectedID = ID;
+            StaticInfo_Setup(ID);
         }
 
-        //Wijzig account
+        //Nieuw Account - Wijzigen werknemers
+        private void New_Acc_btn_Click(object sender, EventArgs e)
+        {
+            Add_Change_Medewerker frm1 = new Add_Change_Medewerker(this,Function.Nieuw, ID);
+            frm1.Show();
+            this.Hide();
+        }
         private void Wijzig_btn_Click(object sender, EventArgs e)
         {
-            Add_Change_Medewerker frm1 = new Add_Change_Medewerker(this, Function.Wijzig,ID);
+            Add_Change_Medewerker frm1 = new Add_Change_Medewerker(this, Function.Wijzig, ID);
             frm1.Show();
             this.Hide();
         }

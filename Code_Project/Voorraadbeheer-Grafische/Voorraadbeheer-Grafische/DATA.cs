@@ -20,7 +20,7 @@ namespace Voorraadbeheer_Grafische
             return Usernamee;
         }
 
-        //Login
+        //Login Data
         public static int LoginID;
         public static int IDcounter = 20;
         public static int SelectedID;
@@ -28,6 +28,30 @@ namespace Voorraadbeheer_Grafische
         //List - Medewerkers/Artikellen
         public static List<Medewerker> Medewerkers = new List<Medewerker>();
         public static List<Artikel> Artikellen = new List<Artikel>();
+        
+        //Convert String to (Categorie/Function enum)
+        public static Categorie Cat(string input)
+        {
+            if (input == "Zaal")
+                return Categorie.Zaal;
+            else if (input == "Straat")
+                return Categorie.Straat;
+            else if (input == "Veld")
+                return Categorie.Veld;
+            else
+                return Categorie.error;
+        }
+        public static Functie Func(string input)
+        {
+            if (input == "Magazijn")
+                return Functie.Magazijn;
+            else if (input == "Winkel")
+                return Functie.Winkel;
+            else if (input == "Admin")
+                return Functie.Admin;
+            else
+                return Functie.error;
+        }
 
         ///====================================<Hardcoded-data>================================================================================
         public static void Art_Rawdata()
@@ -53,7 +77,7 @@ namespace Voorraadbeheer_Grafische
         }
 
         ///====================================<Save-Load>=====================================================================================
-        //Save and load everything
+        //Save - load everything
         public static void Save_all()
         {
             Save_Artikellen(Artikellen);
@@ -65,7 +89,6 @@ namespace Voorraadbeheer_Grafische
             Load_Medewerkers();
         }
 
-        //----------------------------------------------------------------------------------------------------
         //Save - Load (Artikellen)
         public static List<Artikel> Load_Artikellen()
         {
@@ -128,7 +151,6 @@ namespace Voorraadbeheer_Grafische
             }
         }
         
-        //--------------------------------------------------------------------------------------
         //Save - Load (Medewerkers)
         public static List<Medewerker> Load_Medewerkers()
         {
@@ -190,34 +212,10 @@ namespace Voorraadbeheer_Grafische
                         );
             }
         }
-
-        //---------------------------------------------------------------
-        //Convert String to (Categorie/Function enum)
-        public static Categorie Cat(string input)
-        {
-            if (input == "Zaal")
-                return Categorie.Zaal;
-            else if (input == "Straat")
-                return Categorie.Straat;
-            else if (input == "Veld")
-                return Categorie.Veld;
-            else
-                return Categorie.error;
-        }
-        public static Functie Func(string input)
-        {
-            if (input == "Magazijn")
-                return Functie.Magazijn;
-            else if (input == "Winkel")
-                return Functie.Winkel;
-            else if (input == "Admin")
-                return Functie.Admin;
-            else
-                return Functie.error;
-        }
     }
 }
-///====================================<Medewerkers>===========================================================================================
+///====================================<Lists>===========================================================================================
+//Medewerkers
 public enum Functie
 {
     Winkel,
@@ -264,7 +262,8 @@ public class Medewerker
         LaatstVersie = laatstVersie;
     }
 }
-///====================================<Artikellen>============================================================================================
+
+//Artikellen
 public enum Categorie
 {
     Zaal,

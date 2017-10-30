@@ -12,6 +12,7 @@ namespace Voorraadbeheer_Grafische
 {
     public partial class Add_Change_Medewerker : Form
     {
+        //Variable
         public Function func;
         public int AccLogin;
         public Admin fm;
@@ -39,7 +40,7 @@ namespace Voorraadbeheer_Grafische
             fm = fm1;
         }
 
-        //Add
+        //Change-Add
         private void Add()
         {
             DATA.IDcounter++;
@@ -54,30 +55,44 @@ namespace Voorraadbeheer_Grafische
             }
 
 
-                DATA.Medewerkers.Add(new Medewerker(
-                DATA.IDcounter,
-                Naam_txt.Text,
-                Achternaam_txt.Text,
-                Email_txt.Text,
-                Geslacht_cb.Text,
-                DATA.Func(Functie_cb.Text),
-                LoginNaam_txt.Text,
-                Wachtwoord_txt.Text,
-                "img path",
-                output,
+            DATA.Medewerkers.Add(new Medewerker(
+            DATA.IDcounter,
+            Naam_txt.Text,
+            Achternaam_txt.Text,
+            Email_txt.Text,
+            Geslacht_cb.Text,
+            DATA.Func(Functie_cb.Text),
+            LoginNaam_txt.Text,
+            Wachtwoord_txt.Text,
+            "img path",
+            output,
 
-                DateTime.Now.ToShortDateString().ToString(),
-                "",
-                ""));
+            DateTime.Now.ToShortDateString().ToString(),
+            "",
+            ""));
 
-            MessageBox.Show(AccLogin.ToString());
             Admin frm2 = new Admin(DATA.LoginID);
             frm2.Show();
 
             this.Close();
         }
+        private void setup(int id)
+        {
+            for (int i = 0; i < DATA.Medewerkers.Count; i++)
+                if (DATA.Medewerkers[i].ID == id)
+                {
 
-        //Change
+                    Naam_txt.Text = DATA.Medewerkers[i].Naam;
+                    Achternaam_txt.Text = DATA.Medewerkers[i].Achternaam;
+                    Email_txt.Text = DATA.Medewerkers[i].Email;
+                    Telefoonnr_txt.Text = DATA.Medewerkers[i].Telnr.ToString();
+                    LoginNaam_txt.Text = DATA.Medewerkers[i].LoginNaam;
+                    Wachtwoord_txt.Text = DATA.Medewerkers[i].Wachtwoord;
+
+                    //functie
+                    //gender
+                }
+        }
         private void Change(int id)
         {
             for (int i = 0; i < DATA.Medewerkers.Count; i++)
@@ -103,22 +118,19 @@ namespace Voorraadbeheer_Grafische
                     this.Close();
                 }
         }
-        private void setup(int id)
+        private void CheckFieldInputs()
         {
-            for (int i = 0; i < DATA.Medewerkers.Count; i++)
-                if (DATA.Medewerkers[i].ID == id)
-                {
+            //Naam                  Bestaat er al een acc met deze naam?
+            //Achternaam            Not null
+            //Email                 Not null, Contains @
+            //Tel nr                Tryparse?
+            //Login naam            Bestaat er al een acc met deze inlog naam?
+            //Wachtwoord            Zitten hier eisen aan?!
+            //Functie               Staat het niet op None?
+            //Geslacht              Staat dit niet op None?
 
-                    Naam_txt.Text = DATA.Medewerkers[i].Naam;
-                    Achternaam_txt.Text = DATA.Medewerkers[i].Achternaam;
-                    Email_txt.Text = DATA.Medewerkers[i].Email;
-                    Telefoonnr_txt.Text = DATA.Medewerkers[i].Telnr.ToString();
-                    LoginNaam_txt.Text = DATA.Medewerkers[i].LoginNaam;
-                    Wachtwoord_txt.Text = DATA.Medewerkers[i].Wachtwoord;
-
-                    //functie
-                    //gender
-                }
+            //call this before Change has been called!
+            //if all ok call "Change(DATA.SelectedId)"
         }
 
         //General-events

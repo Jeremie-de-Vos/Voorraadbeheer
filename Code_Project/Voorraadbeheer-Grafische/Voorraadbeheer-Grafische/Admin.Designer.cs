@@ -34,9 +34,7 @@
             this.Loguit_btn = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.Werknemer_tab = new System.Windows.Forms.TabPage();
-            this.Weknemers_Apply_btn = new System.Windows.Forms.Button();
-            this.WijzigSomething_cb = new System.Windows.Forms.ComboBox();
-            this.Wijzig_txt = new System.Windows.Forms.TextBox();
+            this.Wijzig_btn = new System.Windows.Forms.Button();
             this.New_Acc_btn = new System.Windows.Forms.Button();
             this.Wachtwoord_lbl = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -46,8 +44,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.AanmaakAcc_lbl = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.Werknemer_Wijzig_cb = new System.Windows.Forms.ComboBox();
             this.Versie_lbl = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.LaatsteActief_lbl = new System.Windows.Forms.Label();
@@ -60,7 +56,6 @@
             this.Tel_colum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Functie_colum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Voorraad_Details_tab = new System.Windows.Forms.TabPage();
-            this.art_wijzigen_txt = new System.Windows.Forms.TextBox();
             this.art_Door_lbl = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.art_LaatstGewijzigd_lbl = new System.Windows.Forms.Label();
@@ -78,22 +73,17 @@
             this.label14 = new System.Windows.Forms.Label();
             this.art_Btw_lbl = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.Art_Apply_btn = new System.Windows.Forms.Button();
             this.DataGrid_Artikellen = new System.Windows.Forms.DataGridView();
             this.ID_art_colum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naam_art_colum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Merk_art_colum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Maat_art_colum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Voorraad_art_colum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.art_wijzigen_Function_cb = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.Art_Wijzig_cb = new System.Windows.Forms.ComboBox();
             this.Searchbar_txt = new System.Windows.Forms.TextBox();
             this.Search_btn = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CompanyLogo_pb = new System.Windows.Forms.PictureBox();
             this.Close_btn = new System.Windows.Forms.Button();
-            this.Wijzig_btn = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.Werknemer_tab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Werknemers)).BeginInit();
@@ -152,9 +142,6 @@
             // Werknemer_tab
             // 
             this.Werknemer_tab.Controls.Add(this.Wijzig_btn);
-            this.Werknemer_tab.Controls.Add(this.Weknemers_Apply_btn);
-            this.Werknemer_tab.Controls.Add(this.WijzigSomething_cb);
-            this.Werknemer_tab.Controls.Add(this.Wijzig_txt);
             this.Werknemer_tab.Controls.Add(this.New_Acc_btn);
             this.Werknemer_tab.Controls.Add(this.Wachtwoord_lbl);
             this.Werknemer_tab.Controls.Add(this.label13);
@@ -164,8 +151,6 @@
             this.Werknemer_tab.Controls.Add(this.label7);
             this.Werknemer_tab.Controls.Add(this.AanmaakAcc_lbl);
             this.Werknemer_tab.Controls.Add(this.label9);
-            this.Werknemer_tab.Controls.Add(this.label5);
-            this.Werknemer_tab.Controls.Add(this.Werknemer_Wijzig_cb);
             this.Werknemer_tab.Controls.Add(this.Versie_lbl);
             this.Werknemer_tab.Controls.Add(this.label4);
             this.Werknemer_tab.Controls.Add(this.LaatsteActief_lbl);
@@ -179,30 +164,16 @@
             this.Werknemer_tab.Text = "Werknemers";
             this.Werknemer_tab.UseVisualStyleBackColor = true;
             // 
-            // Weknemers_Apply_btn
+            // Wijzig_btn
             // 
-            this.Weknemers_Apply_btn.Location = new System.Drawing.Point(44, 364);
-            this.Weknemers_Apply_btn.Name = "Weknemers_Apply_btn";
-            this.Weknemers_Apply_btn.Size = new System.Drawing.Size(71, 24);
-            this.Weknemers_Apply_btn.TabIndex = 12;
-            this.Weknemers_Apply_btn.Text = "Apply";
-            this.Weknemers_Apply_btn.UseVisualStyleBackColor = true;
-            this.Weknemers_Apply_btn.Click += new System.EventHandler(this.Weknemers_Apply_btn_Click);
-            // 
-            // WijzigSomething_cb
-            // 
-            this.WijzigSomething_cb.FormattingEnabled = true;
-            this.WijzigSomething_cb.Location = new System.Drawing.Point(24, 334);
-            this.WijzigSomething_cb.Name = "WijzigSomething_cb";
-            this.WijzigSomething_cb.Size = new System.Drawing.Size(121, 24);
-            this.WijzigSomething_cb.TabIndex = 26;
-            // 
-            // Wijzig_txt
-            // 
-            this.Wijzig_txt.Location = new System.Drawing.Point(24, 333);
-            this.Wijzig_txt.Name = "Wijzig_txt";
-            this.Wijzig_txt.Size = new System.Drawing.Size(119, 22);
-            this.Wijzig_txt.TabIndex = 25;
+            this.Wijzig_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Wijzig_btn.Location = new System.Drawing.Point(248, 390);
+            this.Wijzig_btn.Name = "Wijzig_btn";
+            this.Wijzig_btn.Size = new System.Drawing.Size(162, 35);
+            this.Wijzig_btn.TabIndex = 27;
+            this.Wijzig_btn.Text = "Wijzig Account";
+            this.Wijzig_btn.UseVisualStyleBackColor = true;
+            this.Wijzig_btn.Click += new System.EventHandler(this.Wijzig_btn_Click);
             // 
             // New_Acc_btn
             // 
@@ -290,34 +261,6 @@
             this.label9.Size = new System.Drawing.Size(102, 18);
             this.label9.TabIndex = 18;
             this.label9.Text = "Aanmaak acc:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(23, 274);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 17);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "Wijzig:";
-            // 
-            // Werknemer_Wijzig_cb
-            // 
-            this.Werknemer_Wijzig_cb.FormattingEnabled = true;
-            this.Werknemer_Wijzig_cb.Items.AddRange(new object[] {
-            "None",
-            "Wachtwoord",
-            "Login naam",
-            "Achternaam",
-            "Functie",
-            "Naam",
-            "Email",
-            "Tel"});
-            this.Werknemer_Wijzig_cb.Location = new System.Drawing.Point(24, 303);
-            this.Werknemer_Wijzig_cb.Name = "Werknemer_Wijzig_cb";
-            this.Werknemer_Wijzig_cb.Size = new System.Drawing.Size(121, 24);
-            this.Werknemer_Wijzig_cb.TabIndex = 15;
-            this.Werknemer_Wijzig_cb.SelectedIndexChanged += new System.EventHandler(this.Werknemer_Wijzig_cb_SelectedIndexChanged);
             // 
             // Versie_lbl
             // 
@@ -420,7 +363,6 @@
             // 
             // Voorraad_Details_tab
             // 
-            this.Voorraad_Details_tab.Controls.Add(this.art_wijzigen_txt);
             this.Voorraad_Details_tab.Controls.Add(this.art_Door_lbl);
             this.Voorraad_Details_tab.Controls.Add(this.label24);
             this.Voorraad_Details_tab.Controls.Add(this.art_LaatstGewijzigd_lbl);
@@ -438,11 +380,7 @@
             this.Voorraad_Details_tab.Controls.Add(this.label14);
             this.Voorraad_Details_tab.Controls.Add(this.art_Btw_lbl);
             this.Voorraad_Details_tab.Controls.Add(this.label10);
-            this.Voorraad_Details_tab.Controls.Add(this.Art_Apply_btn);
             this.Voorraad_Details_tab.Controls.Add(this.DataGrid_Artikellen);
-            this.Voorraad_Details_tab.Controls.Add(this.art_wijzigen_Function_cb);
-            this.Voorraad_Details_tab.Controls.Add(this.label6);
-            this.Voorraad_Details_tab.Controls.Add(this.Art_Wijzig_cb);
             this.Voorraad_Details_tab.Location = new System.Drawing.Point(4, 25);
             this.Voorraad_Details_tab.Name = "Voorraad_Details_tab";
             this.Voorraad_Details_tab.Padding = new System.Windows.Forms.Padding(3);
@@ -450,13 +388,6 @@
             this.Voorraad_Details_tab.TabIndex = 1;
             this.Voorraad_Details_tab.Text = "Voorraad-Details";
             this.Voorraad_Details_tab.UseVisualStyleBackColor = true;
-            // 
-            // art_wijzigen_txt
-            // 
-            this.art_wijzigen_txt.Location = new System.Drawing.Point(25, 333);
-            this.art_wijzigen_txt.Name = "art_wijzigen_txt";
-            this.art_wijzigen_txt.Size = new System.Drawing.Size(120, 22);
-            this.art_wijzigen_txt.TabIndex = 49;
             // 
             // art_Door_lbl
             // 
@@ -620,15 +551,6 @@
             this.label10.TabIndex = 32;
             this.label10.Text = "Btw";
             // 
-            // Art_Apply_btn
-            // 
-            this.Art_Apply_btn.Location = new System.Drawing.Point(44, 364);
-            this.Art_Apply_btn.Name = "Art_Apply_btn";
-            this.Art_Apply_btn.Size = new System.Drawing.Size(71, 24);
-            this.Art_Apply_btn.TabIndex = 27;
-            this.Art_Apply_btn.Text = "Apply";
-            this.Art_Apply_btn.UseVisualStyleBackColor = true;
-            // 
             // DataGrid_Artikellen
             // 
             this.DataGrid_Artikellen.AllowUserToDeleteRows = false;
@@ -671,40 +593,6 @@
             this.Voorraad_art_colum.HeaderText = "Voorraad";
             this.Voorraad_art_colum.Name = "Voorraad_art_colum";
             // 
-            // art_wijzigen_Function_cb
-            // 
-            this.art_wijzigen_Function_cb.FormattingEnabled = true;
-            this.art_wijzigen_Function_cb.Location = new System.Drawing.Point(25, 334);
-            this.art_wijzigen_Function_cb.Name = "art_wijzigen_Function_cb";
-            this.art_wijzigen_Function_cb.Size = new System.Drawing.Size(121, 24);
-            this.art_wijzigen_Function_cb.TabIndex = 30;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(23, 274);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 17);
-            this.label6.TabIndex = 29;
-            this.label6.Text = "Wijzig:";
-            // 
-            // Art_Wijzig_cb
-            // 
-            this.Art_Wijzig_cb.FormattingEnabled = true;
-            this.Art_Wijzig_cb.Items.AddRange(new object[] {
-            "None",
-            "Naam",
-            "Merk",
-            "Categorie",
-            "Voorraad",
-            "Inkoop prijs",
-            "Btw"});
-            this.Art_Wijzig_cb.Location = new System.Drawing.Point(24, 303);
-            this.Art_Wijzig_cb.Name = "Art_Wijzig_cb";
-            this.Art_Wijzig_cb.Size = new System.Drawing.Size(121, 24);
-            this.Art_Wijzig_cb.TabIndex = 28;
-            // 
             // Searchbar_txt
             // 
             this.Searchbar_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -712,6 +600,7 @@
             this.Searchbar_txt.Name = "Searchbar_txt";
             this.Searchbar_txt.Size = new System.Drawing.Size(183, 24);
             this.Searchbar_txt.TabIndex = 2;
+            this.Searchbar_txt.TextChanged += new System.EventHandler(this.Searchbar_txt_TextChanged);
             this.Searchbar_txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Searchbar_txt_KeyDown);
             // 
             // Search_btn
@@ -754,17 +643,6 @@
             this.Close_btn.TabIndex = 1;
             this.Close_btn.UseVisualStyleBackColor = true;
             this.Close_btn.Click += new System.EventHandler(this.Close_btn_Click);
-            // 
-            // Wijzig_btn
-            // 
-            this.Wijzig_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Wijzig_btn.Location = new System.Drawing.Point(248, 390);
-            this.Wijzig_btn.Name = "Wijzig_btn";
-            this.Wijzig_btn.Size = new System.Drawing.Size(162, 35);
-            this.Wijzig_btn.TabIndex = 27;
-            this.Wijzig_btn.Text = "Wijzig Account";
-            this.Wijzig_btn.UseVisualStyleBackColor = true;
-            this.Wijzig_btn.Click += new System.EventHandler(this.Wijzig_btn_Click);
             // 
             // Admin
             // 
@@ -821,8 +699,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label Versie_lbl;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox Werknemer_Wijzig_cb;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label AccActief_lbl;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label AanmaakAcc_lbl;
@@ -832,19 +708,12 @@
         private System.Windows.Forms.Label LoginNaam_lbl;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button New_Acc_btn;
-        private System.Windows.Forms.ComboBox WijzigSomething_cb;
-        private System.Windows.Forms.TextBox Wijzig_txt;
-        private System.Windows.Forms.Button Weknemers_Apply_btn;
         private System.Windows.Forms.DataGridView DataGrid_Artikellen;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_art_colum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naam_art_colum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Merk_art_colum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Maat_art_colum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Voorraad_art_colum;
-        private System.Windows.Forms.Button Art_Apply_btn;
-        private System.Windows.Forms.ComboBox art_wijzigen_Function_cb;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox Art_Wijzig_cb;
         private System.Windows.Forms.Label art_InkoopPrijs_lbl;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label art_Btw_lbl;
@@ -862,7 +731,6 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label art_Categorie_lbl;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.TextBox art_wijzigen_txt;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_colum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naam_colum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Achternaam_colum;
