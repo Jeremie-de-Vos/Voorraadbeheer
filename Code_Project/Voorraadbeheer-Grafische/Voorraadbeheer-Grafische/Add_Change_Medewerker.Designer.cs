@@ -1,6 +1,6 @@
 ﻿namespace Voorraadbeheer_Grafische
 {
-    partial class Add_Medewerker
+    partial class Add_Change_Medewerker
     {
         /// <summary>
         /// Required designer variable.

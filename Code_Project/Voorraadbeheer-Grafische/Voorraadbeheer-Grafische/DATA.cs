@@ -20,6 +20,10 @@ namespace Voorraadbeheer_Grafische
             return Usernamee;
         }
 
+        //Login
+        public static int LoginID;
+        public static int IDcounter = 20;
+
         //List - Medewerkers/Artikellen
         public static List<Medewerker> Medewerkers = new List<Medewerker>();
         public static List<Artikel> Artikellen = new List<Artikel>();
@@ -257,7 +261,6 @@ public class Medewerker
         AanmaaktDatum = aanmaaktDatum;
         LaatstIngelogd = laatstIngelogd;
         LaatstVersie = laatstVersie;
-
     }
 }
 ///====================================<Artikellen>============================================================================================

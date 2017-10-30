@@ -93,6 +93,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CompanyLogo_pb = new System.Windows.Forms.PictureBox();
             this.Close_btn = new System.Windows.Forms.Button();
+            this.Wijzig_btn = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.Werknemer_tab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Werknemers)).BeginInit();
@@ -150,6 +151,7 @@
             // 
             // Werknemer_tab
             // 
+            this.Werknemer_tab.Controls.Add(this.Wijzig_btn);
             this.Werknemer_tab.Controls.Add(this.Weknemers_Apply_btn);
             this.Werknemer_tab.Controls.Add(this.WijzigSomething_cb);
             this.Werknemer_tab.Controls.Add(this.Wijzig_txt);
@@ -753,6 +755,17 @@
             this.Close_btn.UseVisualStyleBackColor = true;
             this.Close_btn.Click += new System.EventHandler(this.Close_btn_Click);
             // 
+            // Wijzig_btn
+            // 
+            this.Wijzig_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Wijzig_btn.Location = new System.Drawing.Point(248, 390);
+            this.Wijzig_btn.Name = "Wijzig_btn";
+            this.Wijzig_btn.Size = new System.Drawing.Size(162, 35);
+            this.Wijzig_btn.TabIndex = 27;
+            this.Wijzig_btn.Text = "Wijzig Account";
+            this.Wijzig_btn.UseVisualStyleBackColor = true;
+            this.Wijzig_btn.Click += new System.EventHandler(this.Wijzig_btn_Click);
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -856,5 +869,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Email_colum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tel_colum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Functie_colum;
+        private System.Windows.Forms.Button Wijzig_btn;
     }
 }

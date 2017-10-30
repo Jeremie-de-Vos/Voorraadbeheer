@@ -22,7 +22,8 @@ namespace Voorraadbeheer_Grafische
             //Load - Data
             //Artikellen
             if (File.Exists(DATA.SavePath_Art))
-                DATA.Artikellen = DATA.Load_Artikellen();
+                DATA.Art_Rawdata();
+            //DATA.Artikellen = DATA.Load_Artikellen();
             else
                 DATA.Art_Rawdata();
             //Medewerkers
@@ -54,6 +55,7 @@ namespace Voorraadbeheer_Grafische
                     Warning_lbl.Text = "Succes!!!!";
                     if (DATA.Medewerkers[i].Functie.ToString() == "Admin")
                     {
+                        DATA.LoginID = DATA.Medewerkers[i].ID;
                         Admin frm = new Admin(DATA.Medewerkers[i].ID);
                         frm.Show();
                     }

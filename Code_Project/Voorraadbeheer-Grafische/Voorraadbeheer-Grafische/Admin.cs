@@ -13,7 +13,7 @@ namespace Voorraadbeheer_Grafische
     public partial class Admin : Form
     {
         //Variable
-        private int ID;
+        public static int ID;
 
         //Main
         public Admin(int Id)
@@ -35,16 +35,15 @@ namespace Voorraadbeheer_Grafische
         private void DataGrid_Werknemers_SelectionChanged(object sender, EventArgs e)
         {
             string id = DataGrid_Werknemers.SelectedCells[0].Value.ToString();
-            int ID;
-            Int32.TryParse(id, out ID);
-
+            int ID = Int32.Parse(id);
+            //Int32.TryParse(id, out ID);
             StaticInfo_Setup(ID);
         }
 
         //Nieuw Account
         private void New_Acc_btn_Click(object sender, EventArgs e)
         {
-            Add_Medewerker frm1 = new Add_Medewerker(this);
+            Add_Change_Medewerker frm1 = new Add_Change_Medewerker(this,Function.Nieuw, ID);
             frm1.Show();
             this.Hide();
         }
@@ -60,8 +59,9 @@ namespace Voorraadbeheer_Grafische
                     DATA.Medewerkers[i].LaatstVersie = "Grafische";
                 }
         }
-        private void Datagrid_Setup()
+        public void Datagrid_Setup()
         {
+            DataGrid_Werknemers.Rows.Clear();
             for (int i = 0; i < DATA.Medewerkers.Count; i++)
                 DataGrid_Werknemers.Rows.Add(
                     DATA.Medewerkers[i].ID,
@@ -84,15 +84,6 @@ namespace Voorraadbeheer_Grafische
                     Versie_lbl.Text = DATA.Medewerkers[i].LaatstVersie;
                     AanmaakAcc_lbl.Text = DATA.Medewerkers[i].AanmaaktDatum;
                 }
-        }
-
-        //Refreshe
-        public void RefreshList()
-        {
-            string result;
-            Datagrid_Setup();
-            for (int i = 0; i < DATA.Medewerkers.Count; i++)
-                MessageBox.Show(DATA.Medewerkers[i].Naam);
         }
 
         //Search
@@ -216,6 +207,14 @@ namespace Voorraadbeheer_Grafische
 
             Confirmation frm = new Confirmation(this,id_naam,wijziging,voorheen,naar);
             frm.Show();
+            this.Hide();
+        }
+
+        //Wijzig account
+        private void Wijzig_btn_Click(object sender, EventArgs e)
+        {
+            Add_Change_Medewerker frm1 = new Add_Change_Medewerker(this, Function.Wijzig,ID);
+            frm1.Show();
             this.Hide();
         }
     }
