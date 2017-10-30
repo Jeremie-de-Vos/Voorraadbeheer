@@ -36,7 +36,7 @@ namespace Voorraadbeheer_Grafische
         {
             string id = DataGrid_Werknemers.SelectedCells[0].Value.ToString();
             int ID = Int32.Parse(id);
-            //Int32.TryParse(id, out ID);
+            DATA.SelectedID = ID;
             StaticInfo_Setup(ID);
         }
 

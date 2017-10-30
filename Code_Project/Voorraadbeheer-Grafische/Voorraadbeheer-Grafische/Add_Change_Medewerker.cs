@@ -13,10 +13,8 @@ namespace Voorraadbeheer_Grafische
     public partial class Add_Change_Medewerker : Form
     {
         public Function func;
-        public Admin fm;
-
-        public int Changeid;
         public int AccLogin;
+        public Admin fm;
 
         //Main
         public Add_Change_Medewerker(Admin fm1, Function Functie,int loginID)
@@ -36,6 +34,7 @@ namespace Voorraadbeheer_Grafische
             {
                 label2.Text = "Medewerker Wijzigen";
                 Accepteer_lbl.Text = "Apply";
+                setup(DATA.SelectedID);
             }
             fm = fm1;
         }
@@ -79,8 +78,30 @@ namespace Voorraadbeheer_Grafische
         }
 
         //Change
-        private void Change()
+        private void Change(int id)
         {
+            for (int i = 0; i < DATA.Medewerkers.Count; i++)
+                if (DATA.Medewerkers[i].ID == id)
+                {
+
+                    DATA.Medewerkers[i].Naam = Naam_txt.Text;
+                    DATA.Medewerkers[i].Achternaam = Achternaam_txt.Text;
+                    DATA.Medewerkers[i].Email = Email_txt.Text;
+                    DATA.Medewerkers[i].Telnr = Int32.Parse(Telefoonnr_txt.Text);
+                    DATA.Medewerkers[i].LoginNaam = LoginNaam_txt.Text;
+                    DATA.Medewerkers[i].Wachtwoord = Wachtwoord_txt.Text;
+
+                    DATA.Medewerkers[i].Functie = DATA.Func(Functie_cb.Text);
+                    //add gender
+
+
+
+                    MessageBox.Show("Succesfully changed!");
+                    Admin frm2 = new Admin(DATA.LoginID);
+                    frm2.Show();
+
+                    this.Close();
+                }
         }
         private void setup(int id)
         {
@@ -95,21 +116,9 @@ namespace Voorraadbeheer_Grafische
                     LoginNaam_txt.Text = DATA.Medewerkers[i].LoginNaam;
                     Wachtwoord_txt.Text = DATA.Medewerkers[i].Wachtwoord;
 
-                    Functie_cb.SelectedIndex = 0;
-                    Geslacht_cb.SelectedIndex = 0;
                     //functie
                     //gender
                 }
-        }
-        private int Functie_int(string input)
-        {
-            int Output;
-            if (input == "fd")
-                Output = 0;
-            if (input == "dg")
-                return 0;
-
-            return 0;
         }
 
         //General-events
@@ -123,10 +132,9 @@ namespace Voorraadbeheer_Grafische
         {
             if (func == Function.Nieuw)
                 Add();
-            else if (func == Function.Nieuw)
+            else if (func == Function.Wijzig)
             {
-                setup(Changeid);
-                Change();
+                Change(DATA.SelectedID);
             }
         }
     }
