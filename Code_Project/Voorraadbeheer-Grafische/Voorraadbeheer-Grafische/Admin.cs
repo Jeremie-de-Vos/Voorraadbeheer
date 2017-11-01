@@ -130,7 +130,7 @@ namespace Voorraadbeheer_Grafische
             }
         }
 
-        //Search
+        //Search 
         private void Search()
         {
             
