@@ -23,7 +23,8 @@ namespace Voorraadbeheer_Grafische
         //Login Data
         public static int LoginID;
         public static int IDcounter = 20;
-        public static int SelectedID;
+        public static int SelectedID_werknemers;
+        public static int SelectedID_Voorraad_Details;
 
         //List - Medewerkers/Artikellen
         public static List<Medewerker> Medewerkers = new List<Medewerker>();

@@ -20,7 +20,8 @@ namespace Voorraadbeheer_Grafische
             ID = Id;
 
             account_Setup();
-            Datagrid_Setup();
+            Datagrid_Medewerker_Setup();
+            Datagrid_VoorraadDetail_Setup();
         }
 
         //Setup
@@ -34,7 +35,9 @@ namespace Voorraadbeheer_Grafische
                     DATA.Medewerkers[i].LaatstVersie = "Grafische";
                 }
         }
-        private void Datagrid_Setup()
+
+        //medewerker
+        private void Datagrid_Medewerker_Setup()
         {
             Searchbar_txt.Text = null;
             DataGrid_Werknemers.Rows.Clear();
@@ -49,7 +52,7 @@ namespace Voorraadbeheer_Grafische
 
             DataGrid_Werknemers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
-        private void StaticInfo_Setup(int Id)
+        private void StaticInfo_Medewerker_Setup(int Id)
         {
             for (int i = 0; i < DATA.Medewerkers.Count; i++)
                 if (Id == DATA.Medewerkers[i].ID)
@@ -60,6 +63,71 @@ namespace Voorraadbeheer_Grafische
                     Versie_lbl.Text = DATA.Medewerkers[i].LaatstVersie;
                     AanmaakAcc_lbl.Text = DATA.Medewerkers[i].AanmaaktDatum;
                 }
+        }
+        private void DataGrid_Werknemers_SelectionChanged(object sender, EventArgs e)
+        {
+            if(DataGrid_Werknemers.SelectedCells.Count > 0)
+            {
+                int value;
+                string input = DataGrid_Werknemers.SelectedCells[0].Value.ToString();
+                if (int.TryParse(input, out value))
+                {
+                    DATA.SelectedID_werknemers = value;
+                    StaticInfo_Medewerker_Setup(value);
+                }
+            }
+        }
+
+        //Voorraad
+        private void Datagrid_VoorraadDetail_Setup()
+        {
+            Searchbar_txt.Text = null;
+            Datagrid_Artikellen.Rows.Clear();
+            for (int i = 0; i < DATA.Artikellen.Count; i++)
+                Datagrid_Artikellen.Rows.Add(
+                    DATA.Artikellen[i].ID,
+                    DATA.Artikellen[i].Naam,
+                    DATA.Artikellen[i].Merk,
+                    DATA.Artikellen[i].Maat,
+                    DATA.Artikellen[i].Voorraad,
+                    DATA.Artikellen[i].Categorie,
+                    DATA.Artikellen[i].Inkoopprijs
+                    );
+
+            Datagrid_Artikellen.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+        private void StaticInfo_VoorraadDetail_Setup(int Id)
+        {
+            for (int i = 0; i < DATA.Artikellen.Count; i++)
+                if (Id == DATA.Artikellen[i].ID)
+                {
+                    //calculate
+                    int EenProcent = (DATA.Artikellen[i].Inkoopprijs / 100);
+                    int TotalBTW = (100 - DATA.Artikellen[i].BTW);
+
+                    //set
+                    art_Btw_lbl.Text = DATA.Artikellen[i].BTW.ToString()+"%";
+                    art_IncBtw_lbl.Text = (TotalBTW * EenProcent).ToString();
+                    art_ExBtw_lbl.Text = DATA.Artikellen[i].Inkoopprijs.ToString();
+                    art_Winst_lbl.Text = ((TotalBTW * EenProcent)- DATA.Artikellen[i].Inkoopprijs).ToString();
+
+
+                    art_LaatstGewijzigd_lbl.Text = DATA.Artikellen[i].LaatstGewijzigd;
+                    art_Door_lbl.Text = DATA.Artikellen[i].GewijzigdDoor;
+                }
+        }
+        private void DataGrid_Artikellen_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (DataGrid_Werknemers.SelectedCells.Count > 0)
+            {
+                int value;
+                string input = DataGrid_Werknemers.SelectedCells[0].Value.ToString();
+                if (int.TryParse(input, out value))
+                {
+                    DATA.SelectedID_werknemers = value;
+                    StaticInfo_Medewerker_Setup(value);
+                }
+            }
         }
 
         //Search
@@ -108,16 +176,6 @@ namespace Voorraadbeheer_Grafische
         {
             Environment.Exit(0);
         }
-        private void DataGrid_Werknemers_SelectionChanged(object sender, EventArgs e)
-        {
-            if (DataGrid_Werknemers.RowCount <= -1)
-            {
-                string id = DataGrid_Werknemers.SelectedCells[0].Value.ToString();
-                int ID = Int32.Parse(id);
-                DATA.SelectedID = ID;
-                StaticInfo_Setup(ID);
-            }
-        }
 
         //Nieuw Account - Wijzigen werknemers - Delete Account
         private void New_Acc_btn_Click(object sender, EventArgs e)
@@ -140,16 +198,17 @@ namespace Voorraadbeheer_Grafische
             {
                 string id = DataGrid_Werknemers.SelectedCells[0].Value.ToString();
                 int ID = Int32.Parse(id);
-                DATA.SelectedID = ID;
+                DATA.SelectedID_werknemers = ID;
 
 
                 for (int i = 0; i < DATA.Medewerkers.Count; i++)
                     if (DATA.Medewerkers[i].ID == ID)
                     {
                         DATA.Medewerkers.Remove(DATA.Medewerkers[i]);
-                        Datagrid_Setup();
+                        Datagrid_Medewerker_Setup();
                     }
             }
         }
+
     }
 }

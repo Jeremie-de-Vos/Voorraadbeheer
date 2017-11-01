@@ -35,7 +35,7 @@ namespace Voorraadbeheer_Grafische
             {
                 label2.Text = "Medewerker Wijzigen";
                 Accepteer_lbl.Text = "Apply";
-                setup(DATA.SelectedID);
+                setup(DATA.SelectedID_werknemers);
             }
             fm = fm1;
         }
@@ -146,7 +146,7 @@ namespace Voorraadbeheer_Grafische
                 Add();
             else if (func == Function.Wijzig)
             {
-                Change(DATA.SelectedID);
+                Change(DATA.SelectedID_werknemers);
             }
         }
     }

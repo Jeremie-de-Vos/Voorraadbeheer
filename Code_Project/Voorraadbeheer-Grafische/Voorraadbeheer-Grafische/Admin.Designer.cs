@@ -34,6 +34,7 @@
             this.Loguit_btn = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.Werknemer_tab = new System.Windows.Forms.TabPage();
+            this.Delete_Medew_Acc = new System.Windows.Forms.Button();
             this.Wijzig_btn = new System.Windows.Forms.Button();
             this.New_Acc_btn = new System.Windows.Forms.Button();
             this.Wachtwoord_lbl = new System.Windows.Forms.Label();
@@ -60,8 +61,6 @@
             this.label24 = new System.Windows.Forms.Label();
             this.art_LaatstGewijzigd_lbl = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.art_Categorie_lbl = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
             this.newArt_btn = new System.Windows.Forms.Button();
             this.art_Winst_lbl = new System.Windows.Forms.Label();
             this.art_ExBtw_lbl = new System.Windows.Forms.Label();
@@ -69,27 +68,26 @@
             this.label21 = new System.Windows.Forms.Label();
             this.art_IncBtw_lbl = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.art_InkoopPrijs_lbl = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.art_Btw_lbl = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.DataGrid_Artikellen = new System.Windows.Forms.DataGridView();
-            this.ID_art_colum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Naam_art_colum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Merk_art_colum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Maat_art_colum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Voorraad_art_colum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Datagrid_Artikellen = new System.Windows.Forms.DataGridView();
             this.Searchbar_txt = new System.Windows.Forms.TextBox();
             this.Search_btn = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CompanyLogo_pb = new System.Windows.Forms.PictureBox();
             this.Close_btn = new System.Windows.Forms.Button();
-            this.Delete_Medew_Acc = new System.Windows.Forms.Button();
+            this.ID_art_colum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Naam_art_colum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Merk_art_colum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Maat_art_colum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Voorraad_art_colum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Categorie_Colum_Admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prijs_Colum_Admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl.SuspendLayout();
             this.Werknemer_tab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Werknemers)).BeginInit();
             this.Voorraad_Details_tab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Artikellen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Datagrid_Artikellen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyLogo_pb)).BeginInit();
             this.SuspendLayout();
@@ -165,6 +163,17 @@
             this.Werknemer_tab.TabIndex = 0;
             this.Werknemer_tab.Text = "Werknemers";
             this.Werknemer_tab.UseVisualStyleBackColor = true;
+            // 
+            // Delete_Medew_Acc
+            // 
+            this.Delete_Medew_Acc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Delete_Medew_Acc.Location = new System.Drawing.Point(0, 394);
+            this.Delete_Medew_Acc.Name = "Delete_Medew_Acc";
+            this.Delete_Medew_Acc.Size = new System.Drawing.Size(70, 31);
+            this.Delete_Medew_Acc.TabIndex = 28;
+            this.Delete_Medew_Acc.Text = "Delete";
+            this.Delete_Medew_Acc.UseVisualStyleBackColor = true;
+            this.Delete_Medew_Acc.Click += new System.EventHandler(this.Delete_Medew_Acc_Click);
             // 
             // Wijzig_btn
             // 
@@ -369,8 +378,6 @@
             this.Voorraad_Details_tab.Controls.Add(this.label24);
             this.Voorraad_Details_tab.Controls.Add(this.art_LaatstGewijzigd_lbl);
             this.Voorraad_Details_tab.Controls.Add(this.label26);
-            this.Voorraad_Details_tab.Controls.Add(this.art_Categorie_lbl);
-            this.Voorraad_Details_tab.Controls.Add(this.label30);
             this.Voorraad_Details_tab.Controls.Add(this.newArt_btn);
             this.Voorraad_Details_tab.Controls.Add(this.art_Winst_lbl);
             this.Voorraad_Details_tab.Controls.Add(this.art_ExBtw_lbl);
@@ -378,11 +385,9 @@
             this.Voorraad_Details_tab.Controls.Add(this.label21);
             this.Voorraad_Details_tab.Controls.Add(this.art_IncBtw_lbl);
             this.Voorraad_Details_tab.Controls.Add(this.label16);
-            this.Voorraad_Details_tab.Controls.Add(this.art_InkoopPrijs_lbl);
-            this.Voorraad_Details_tab.Controls.Add(this.label14);
             this.Voorraad_Details_tab.Controls.Add(this.art_Btw_lbl);
             this.Voorraad_Details_tab.Controls.Add(this.label10);
-            this.Voorraad_Details_tab.Controls.Add(this.DataGrid_Artikellen);
+            this.Voorraad_Details_tab.Controls.Add(this.Datagrid_Artikellen);
             this.Voorraad_Details_tab.Location = new System.Drawing.Point(4, 25);
             this.Voorraad_Details_tab.Name = "Voorraad_Details_tab";
             this.Voorraad_Details_tab.Padding = new System.Windows.Forms.Padding(3);
@@ -394,7 +399,7 @@
             // art_Door_lbl
             // 
             this.art_Door_lbl.AutoSize = true;
-            this.art_Door_lbl.Location = new System.Drawing.Point(146, 70);
+            this.art_Door_lbl.Location = new System.Drawing.Point(145, 147);
             this.art_Door_lbl.Name = "art_Door_lbl";
             this.art_Door_lbl.Size = new System.Drawing.Size(48, 17);
             this.art_Door_lbl.TabIndex = 47;
@@ -404,7 +409,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(23, 69);
+            this.label24.Location = new System.Drawing.Point(22, 146);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(46, 18);
             this.label24.TabIndex = 48;
@@ -413,7 +418,7 @@
             // art_LaatstGewijzigd_lbl
             // 
             this.art_LaatstGewijzigd_lbl.AutoSize = true;
-            this.art_LaatstGewijzigd_lbl.Location = new System.Drawing.Point(147, 52);
+            this.art_LaatstGewijzigd_lbl.Location = new System.Drawing.Point(146, 129);
             this.art_LaatstGewijzigd_lbl.Name = "art_LaatstGewijzigd_lbl";
             this.art_LaatstGewijzigd_lbl.Size = new System.Drawing.Size(48, 17);
             this.art_LaatstGewijzigd_lbl.TabIndex = 45;
@@ -423,30 +428,11 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(23, 49);
+            this.label26.Location = new System.Drawing.Point(22, 126);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(120, 18);
             this.label26.TabIndex = 46;
             this.label26.Text = "Laatst Gewijzigd:";
-            // 
-            // art_Categorie_lbl
-            // 
-            this.art_Categorie_lbl.AutoSize = true;
-            this.art_Categorie_lbl.Location = new System.Drawing.Point(147, 33);
-            this.art_Categorie_lbl.Name = "art_Categorie_lbl";
-            this.art_Categorie_lbl.Size = new System.Drawing.Size(48, 17);
-            this.art_Categorie_lbl.TabIndex = 41;
-            this.art_Categorie_lbl.Text = "********";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(23, 31);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(76, 18);
-            this.label30.TabIndex = 42;
-            this.label30.Text = "Categorie:";
             // 
             // newArt_btn
             // 
@@ -461,7 +447,7 @@
             // art_Winst_lbl
             // 
             this.art_Winst_lbl.AutoSize = true;
-            this.art_Winst_lbl.Location = new System.Drawing.Point(148, 185);
+            this.art_Winst_lbl.Location = new System.Drawing.Point(146, 89);
             this.art_Winst_lbl.Name = "art_Winst_lbl";
             this.art_Winst_lbl.Size = new System.Drawing.Size(48, 17);
             this.art_Winst_lbl.TabIndex = 39;
@@ -470,7 +456,7 @@
             // art_ExBtw_lbl
             // 
             this.art_ExBtw_lbl.AutoSize = true;
-            this.art_ExBtw_lbl.Location = new System.Drawing.Point(146, 166);
+            this.art_ExBtw_lbl.Location = new System.Drawing.Point(146, 70);
             this.art_ExBtw_lbl.Name = "art_ExBtw_lbl";
             this.art_ExBtw_lbl.Size = new System.Drawing.Size(48, 17);
             this.art_ExBtw_lbl.TabIndex = 37;
@@ -480,7 +466,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(22, 183);
+            this.label20.Location = new System.Drawing.Point(20, 87);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(50, 18);
             this.label20.TabIndex = 40;
@@ -490,7 +476,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(23, 165);
+            this.label21.Location = new System.Drawing.Point(21, 69);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(58, 18);
             this.label21.TabIndex = 38;
@@ -499,7 +485,7 @@
             // art_IncBtw_lbl
             // 
             this.art_IncBtw_lbl.AutoSize = true;
-            this.art_IncBtw_lbl.Location = new System.Drawing.Point(147, 148);
+            this.art_IncBtw_lbl.Location = new System.Drawing.Point(145, 52);
             this.art_IncBtw_lbl.Name = "art_IncBtw_lbl";
             this.art_IncBtw_lbl.Size = new System.Drawing.Size(48, 17);
             this.art_IncBtw_lbl.TabIndex = 35;
@@ -509,35 +495,16 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(23, 145);
+            this.label16.Location = new System.Drawing.Point(21, 49);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(60, 18);
             this.label16.TabIndex = 36;
             this.label16.Text = "Inc Btw:";
             // 
-            // art_InkoopPrijs_lbl
-            // 
-            this.art_InkoopPrijs_lbl.AutoSize = true;
-            this.art_InkoopPrijs_lbl.Location = new System.Drawing.Point(147, 126);
-            this.art_InkoopPrijs_lbl.Name = "art_InkoopPrijs_lbl";
-            this.art_InkoopPrijs_lbl.Size = new System.Drawing.Size(48, 17);
-            this.art_InkoopPrijs_lbl.TabIndex = 33;
-            this.art_InkoopPrijs_lbl.Text = "********";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(24, 125);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(88, 18);
-            this.label14.TabIndex = 34;
-            this.label14.Text = "Inkoop prijs:";
-            // 
             // art_Btw_lbl
             // 
             this.art_Btw_lbl.AutoSize = true;
-            this.art_Btw_lbl.Location = new System.Drawing.Point(147, 108);
+            this.art_Btw_lbl.Location = new System.Drawing.Point(145, 33);
             this.art_Btw_lbl.Name = "art_Btw_lbl";
             this.art_Btw_lbl.Size = new System.Drawing.Size(48, 17);
             this.art_Btw_lbl.TabIndex = 31;
@@ -547,53 +514,31 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(23, 106);
+            this.label10.Location = new System.Drawing.Point(21, 31);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(33, 18);
             this.label10.TabIndex = 32;
             this.label10.Text = "Btw";
             // 
-            // DataGrid_Artikellen
+            // Datagrid_Artikellen
             // 
-            this.DataGrid_Artikellen.AllowUserToDeleteRows = false;
-            this.DataGrid_Artikellen.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.DataGrid_Artikellen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGrid_Artikellen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Datagrid_Artikellen.AllowUserToDeleteRows = false;
+            this.Datagrid_Artikellen.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.Datagrid_Artikellen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Datagrid_Artikellen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_art_colum,
             this.Naam_art_colum,
             this.Merk_art_colum,
             this.Maat_art_colum,
-            this.Voorraad_art_colum});
-            this.DataGrid_Artikellen.Location = new System.Drawing.Point(248, 31);
-            this.DataGrid_Artikellen.Name = "DataGrid_Artikellen";
-            this.DataGrid_Artikellen.RowTemplate.Height = 24;
-            this.DataGrid_Artikellen.Size = new System.Drawing.Size(760, 357);
-            this.DataGrid_Artikellen.TabIndex = 0;
-            // 
-            // ID_art_colum
-            // 
-            this.ID_art_colum.HeaderText = "ID";
-            this.ID_art_colum.Name = "ID_art_colum";
-            // 
-            // Naam_art_colum
-            // 
-            this.Naam_art_colum.HeaderText = "Naam";
-            this.Naam_art_colum.Name = "Naam_art_colum";
-            // 
-            // Merk_art_colum
-            // 
-            this.Merk_art_colum.HeaderText = "Merk";
-            this.Merk_art_colum.Name = "Merk_art_colum";
-            // 
-            // Maat_art_colum
-            // 
-            this.Maat_art_colum.HeaderText = "Maat";
-            this.Maat_art_colum.Name = "Maat_art_colum";
-            // 
-            // Voorraad_art_colum
-            // 
-            this.Voorraad_art_colum.HeaderText = "Voorraad";
-            this.Voorraad_art_colum.Name = "Voorraad_art_colum";
+            this.Voorraad_art_colum,
+            this.Categorie_Colum_Admin,
+            this.Prijs_Colum_Admin});
+            this.Datagrid_Artikellen.Location = new System.Drawing.Point(263, 31);
+            this.Datagrid_Artikellen.Name = "Datagrid_Artikellen";
+            this.Datagrid_Artikellen.RowTemplate.Height = 24;
+            this.Datagrid_Artikellen.Size = new System.Drawing.Size(745, 357);
+            this.Datagrid_Artikellen.TabIndex = 0;
+            this.Datagrid_Artikellen.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGrid_Artikellen_CellValueChanged);
             // 
             // Searchbar_txt
             // 
@@ -646,16 +591,42 @@
             this.Close_btn.UseVisualStyleBackColor = true;
             this.Close_btn.Click += new System.EventHandler(this.Close_btn_Click);
             // 
-            // Delete_Medew_Acc
+            // ID_art_colum
             // 
-            this.Delete_Medew_Acc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Delete_Medew_Acc.Location = new System.Drawing.Point(0, 394);
-            this.Delete_Medew_Acc.Name = "Delete_Medew_Acc";
-            this.Delete_Medew_Acc.Size = new System.Drawing.Size(70, 31);
-            this.Delete_Medew_Acc.TabIndex = 28;
-            this.Delete_Medew_Acc.Text = "Delete";
-            this.Delete_Medew_Acc.UseVisualStyleBackColor = true;
-            this.Delete_Medew_Acc.Click += new System.EventHandler(this.Delete_Medew_Acc_Click);
+            this.ID_art_colum.HeaderText = "ID";
+            this.ID_art_colum.Name = "ID_art_colum";
+            // 
+            // Naam_art_colum
+            // 
+            this.Naam_art_colum.HeaderText = "Naam";
+            this.Naam_art_colum.Name = "Naam_art_colum";
+            // 
+            // Merk_art_colum
+            // 
+            this.Merk_art_colum.HeaderText = "Merk";
+            this.Merk_art_colum.Name = "Merk_art_colum";
+            // 
+            // Maat_art_colum
+            // 
+            this.Maat_art_colum.HeaderText = "Maat";
+            this.Maat_art_colum.Name = "Maat_art_colum";
+            // 
+            // Voorraad_art_colum
+            // 
+            this.Voorraad_art_colum.HeaderText = "Voorraad";
+            this.Voorraad_art_colum.Name = "Voorraad_art_colum";
+            // 
+            // Categorie_Colum_Admin
+            // 
+            this.Categorie_Colum_Admin.HeaderText = "Categorie";
+            this.Categorie_Colum_Admin.Name = "Categorie_Colum_Admin";
+            this.Categorie_Colum_Admin.ReadOnly = true;
+            // 
+            // Prijs_Colum_Admin
+            // 
+            this.Prijs_Colum_Admin.HeaderText = "Inkoopprijs";
+            this.Prijs_Colum_Admin.Name = "Prijs_Colum_Admin";
+            this.Prijs_Colum_Admin.ReadOnly = true;
             // 
             // Admin
             // 
@@ -685,7 +656,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Werknemers)).EndInit();
             this.Voorraad_Details_tab.ResumeLayout(false);
             this.Voorraad_Details_tab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Artikellen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Datagrid_Artikellen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyLogo_pb)).EndInit();
             this.ResumeLayout(false);
@@ -721,14 +692,7 @@
         private System.Windows.Forms.Label LoginNaam_lbl;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button New_Acc_btn;
-        private System.Windows.Forms.DataGridView DataGrid_Artikellen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_art_colum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Naam_art_colum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Merk_art_colum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Maat_art_colum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Voorraad_art_colum;
-        private System.Windows.Forms.Label art_InkoopPrijs_lbl;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.DataGridView Datagrid_Artikellen;
         private System.Windows.Forms.Label art_Btw_lbl;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label art_IncBtw_lbl;
@@ -742,8 +706,6 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label art_LaatstGewijzigd_lbl;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label art_Categorie_lbl;
-        private System.Windows.Forms.Label label30;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_colum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naam_colum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Achternaam_colum;
@@ -752,5 +714,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Functie_colum;
         private System.Windows.Forms.Button Wijzig_btn;
         private System.Windows.Forms.Button Delete_Medew_Acc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_art_colum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Naam_art_colum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Merk_art_colum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Maat_art_colum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Voorraad_art_colum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Categorie_Colum_Admin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Prijs_Colum_Admin;
     }
 }
