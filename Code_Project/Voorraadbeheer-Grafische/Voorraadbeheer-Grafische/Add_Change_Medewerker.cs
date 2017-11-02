@@ -120,17 +120,7 @@ namespace Voorraadbeheer_Grafische
         }
         private void CheckFieldInputs()
         {
-            //Naam                  Bestaat er al een acc met deze naam?
-            //Achternaam            Not null
-            //Email                 Not null, Contains @
-            //Tel nr                Tryparse?
-            //Login naam            Bestaat er al een acc met deze inlog naam?
-            //Wachtwoord            Zitten hier eisen aan?!
-            //Functie               Staat het niet op None?
-            //Geslacht              Staat dit niet op None?
 
-            //call this before Change has been called!
-            //if all ok call "Change(DATA.SelectedId)"
         }
 
         //General-events

@@ -280,11 +280,11 @@ public class Artikel
     public Categorie Categorie;
 
     //prijzen
-    public int Inkoopprijs;
+    public double Inkoopprijs;
     public int BTW;
-    public int Winst;
-    public int Inc_btw;
-    public int Ex_btw;
+    public double Winst;
+    public double Inc_btw;
+    public double Ex_btw;
 
     public string Maat;
     public int Voorraad;
@@ -292,7 +292,7 @@ public class Artikel
     public string LaatstGewijzigd;
     public string GewijzigdDoor;
 
-    public Artikel(int iD,string naam,string merk,Categorie categorie,int inkoopprijs,int btw,int winst,int inc_btw,int ex_btw,string maat,int voorraad, string laatstGewijzigd, string gewijzigdDoor)
+    public Artikel(int iD,string naam,string merk,Categorie categorie, double inkoopprijs, int btw, double winst, double inc_btw, double ex_btw,string maat,int voorraad, string laatstGewijzigd, string gewijzigdDoor)
     {
         ID = iD;
         Naam = naam;

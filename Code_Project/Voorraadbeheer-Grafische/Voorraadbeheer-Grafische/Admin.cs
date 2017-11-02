@@ -102,30 +102,32 @@ namespace Voorraadbeheer_Grafische
                 if (Id == DATA.Artikellen[i].ID)
                 {
                     //calculate
-                    int EenProcent = (DATA.Artikellen[i].Inkoopprijs / 100);
-                    int TotalBTW = (100 - DATA.Artikellen[i].BTW);
+                    double EenProcent = (DATA.Artikellen[i].Inkoopprijs / 100.00);
+                    double TotalBTW = (100 - DATA.Artikellen[i].BTW * EenProcent);
+
+                    double IncBTw = ((DATA.Artikellen[i].Inkoopprijs/100.00) * (100.00 + DATA.Artikellen[i].BTW));
 
                     //set
-                    art_Btw_lbl.Text = DATA.Artikellen[i].BTW.ToString()+"%";
-                    art_IncBtw_lbl.Text = (TotalBTW * EenProcent).ToString();
-                    art_ExBtw_lbl.Text = DATA.Artikellen[i].Inkoopprijs.ToString();
-                    art_Winst_lbl.Text = ((TotalBTW * EenProcent)- DATA.Artikellen[i].Inkoopprijs).ToString();
+                    art_Btw_lbl.Text = DATA.Artikellen[i].BTW.ToString()+"%";                                       //Btw
+                    art_IncBtw_lbl.Text = IncBTw.ToString();                                                        //IncBtw
+                    art_ExBtw_lbl.Text = DATA.Artikellen[i].Inkoopprijs.ToString();                                 //ExBtw
+                    art_Winst_lbl.Text = ((TotalBTW * EenProcent)- DATA.Artikellen[i].Inkoopprijs).ToString();      //Winst
 
 
-                    art_LaatstGewijzigd_lbl.Text = DATA.Artikellen[i].LaatstGewijzigd;
-                    art_Door_lbl.Text = DATA.Artikellen[i].GewijzigdDoor;
+                    art_LaatstGewijzigd_lbl.Text = DATA.Artikellen[i].LaatstGewijzigd;                              //LaatstGewijzigd
+                    art_Door_lbl.Text = DATA.Artikellen[i].GewijzigdDoor;                                           //Door
                 }
         }
-        private void DataGrid_Artikellen_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void Datagrid_Artikellen_SelectionChanged(object sender, EventArgs e)
         {
-            if (DataGrid_Werknemers.SelectedCells.Count > 0)
+            if (Datagrid_Artikellen.SelectedCells.Count > 0)
             {
                 int value;
-                string input = DataGrid_Werknemers.SelectedCells[0].Value.ToString();
+                string input = Datagrid_Artikellen.SelectedCells[0].Value.ToString();
                 if (int.TryParse(input, out value))
                 {
-                    DATA.SelectedID_werknemers = value;
-                    StaticInfo_Medewerker_Setup(value);
+                    DATA.SelectedID_Voorraad_Details = value;
+                    StaticInfo_VoorraadDetail_Setup(value);
                 }
             }
         }
@@ -152,8 +154,26 @@ namespace Voorraadbeheer_Grafische
                         DATA.Medewerkers[i].Telnr,
                         DATA.Medewerkers[i].Functie.ToString());
                     }
-                DataGrid_Werknemers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             }
+            else if (tabControl.SelectedIndex == 1)
+            {
+                Datagrid_Artikellen.Rows.Clear();
+                String searchValue = search_txt;
+
+                for (int i = 0; i < DATA.Artikellen.Count; i++)
+                    if (DATA.Artikellen[i].Naam.ToLower().Contains(searchValue))
+                    {
+                        Datagrid_Artikellen.Rows.Add(
+                        DATA.Artikellen[i].ID,
+                        DATA.Artikellen[i].Naam,
+                        DATA.Artikellen[i].Merk,
+                        DATA.Artikellen[i].Maat,
+                        DATA.Artikellen[i].Voorraad,
+                        DATA.Artikellen[i].Categorie,
+                        DATA.Artikellen[i].Inkoopprijs);
+                    }
+            }
+            DataGrid_Werknemers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
         private void Search_btn_Click(object sender, EventArgs e)
         {
@@ -210,5 +230,43 @@ namespace Voorraadbeheer_Grafische
             }
         }
 
+        //Nieuw Artikel - Wijzigen Artikel - Delete Artikel
+        private void newArt_btn_Click(object sender, EventArgs e)
+        {
+            Add_Change_Artikel frm1 = new Add_Change_Artikel(this, Function.Nieuw, ID);
+            frm1.Show();
+            this.Hide();
+        }
+        private void Wijzig_art_btn_Click(object sender, EventArgs e)
+        {
+            Add_Change_Artikel frm1 = new Add_Change_Artikel(this, Function.Wijzig, ID);
+            frm1.Show();
+            this.Hide();
+        }
+        private void Delete_art_btn_Click(object sender, EventArgs e)
+        {
+            DialogResult dr;
+            dr = MessageBox.Show("Wil je dit ARTIKEL echt verwijderen?", "Confirm", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                string id = Datagrid_Artikellen.SelectedCells[0].Value.ToString();
+                int ID = Int32.Parse(id);
+                DATA.SelectedID_Voorraad_Details = ID;
+
+
+                for (int i = 0; i < DATA.Artikellen.Count; i++)
+                    if (DATA.Artikellen[i].ID == ID)
+                    {
+                        DATA.Artikellen.Remove(DATA.Artikellen[i]);
+                        Datagrid_VoorraadDetail_Setup();
+                    }
+            }
+        }
+        
+        //Chart
+        private void tabControl_TabIndexChanged(object sender, EventArgs e)
+        {
+            chart1.Series["Amount"].Points.AddXY("peter", 1000);
+        }
     }
 }
