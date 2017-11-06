@@ -80,12 +80,12 @@ namespace Voorraadbeheer_Grafische
         //-------------<Hardcoded>---------------------
         public static void Art_Rawdata()
         {
-            Artikellen.Add(new Artikel(1, "Naam1", "Merk", Art_Categorie.Straat, 40, 21, 10, 41, 41, "Maat", 500, "Laatst Gewijzigd", "Gewijzigd door"));
+            Artikellen.Add(new Artikel(1, "Naam1", "Merk", Art_Categorie.Straat, 40, 21, 10, 41, 41, "Maat", 0, "Laatst Gewijzigd", "Gewijzigd door"));
             Artikellen.Add(new Artikel(2, "Naam2", "Merk", Art_Categorie.Straat, 40, 21, 10, 41, 41, "Maat", 500, "Laatst Gewijzigd", "Gewijzigd door"));
             Artikellen.Add(new Artikel(3, "Naam3", "Merk", Art_Categorie.Straat, 40, 21, 10, 41, 41, "Maat", 500, "Laatst Gewijzigd", "Gewijzigd door"));
-            Artikellen.Add(new Artikel(4, "Naam4", "Merk", Art_Categorie.Straat, 40, 21, 10, 41, 41, "Maat", 500, "Laatst Gewijzigd", "Gewijzigd door"));
+            Artikellen.Add(new Artikel(4, "Naam4", "Merk", Art_Categorie.Straat, 40, 21, 10, 41, 41, "Maat", 0, "Laatst Gewijzigd", "Gewijzigd door"));
             Artikellen.Add(new Artikel(5, "Naam5", "Merk", Art_Categorie.Straat, 40, 21, 10, 41, 41, "Maat", 500, "Laatst Gewijzigd", "Gewijzigd door"));
-            Artikellen.Add(new Artikel(6, "Naam6", "Merk", Art_Categorie.Straat, 40, 21, 10, 41, 41, "Maat", 500, "Laatst Gewijzigd", "Gewijzigd door"));
+            Artikellen.Add(new Artikel(6, "Naam6", "Merk", Art_Categorie.Straat, 40, 21, 10, 41, 41, "Maat", 0, "Laatst Gewijzigd", "Gewijzigd door"));
             Artikellen.Add(new Artikel(7, "Naam7", "Merk", Art_Categorie.Straat, 40, 21, 10, 41, 41, "Maat", 500, "Laatst Gewijzigd", "Gewijzigd door"));
         }
         public static void Mede_Rawdata()

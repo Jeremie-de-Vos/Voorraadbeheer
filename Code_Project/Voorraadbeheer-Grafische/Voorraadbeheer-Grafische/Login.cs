@@ -21,6 +21,7 @@ namespace Voorraadbeheer_Grafische
         {
             InitializeComponent();
             frm = this;
+            Naam_txt.Focus();
 
             //Load - Data
             //Artikellen
@@ -62,10 +63,15 @@ namespace Voorraadbeheer_Grafische
                         DATA.LoginID = DATA.Medewerkers[i].ID;
                         Admin frm = new Admin(DATA.Medewerkers[i].ID);
                         frm.Show();
+                        this.Hide();
                     }
                     else if (DATA.Medewerkers[i].Functie.ToString() == "Winkel")
                     {
                         MessageBox.Show("Winkel");
+                        DATA.LoginID = DATA.Medewerkers[i].ID;
+                        Winkel_Beheer frm = new Winkel_Beheer(DATA.Medewerkers[i].ID);
+                        frm.Show();
+                        this.Hide();
                     }
                     else if (DATA.Medewerkers[i].Functie.ToString() == "Magazijn")
                     {

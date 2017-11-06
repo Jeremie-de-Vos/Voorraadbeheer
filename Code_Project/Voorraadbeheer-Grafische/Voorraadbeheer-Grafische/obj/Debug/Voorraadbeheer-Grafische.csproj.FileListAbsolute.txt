@@ -23,3 +23,4 @@ C:\Users\Jeremie\Desktop\School ict\Rijk\App 2017_2018\Voorraad-Beheer\Code_Proj
 C:\Users\Jeremie\Desktop\School ict\Rijk\App 2017_2018\Voorraad-Beheer\Code_Project\Voorraadbeheer-Grafische\Voorraadbeheer-Grafische\obj\Debug\Voorraadbeheer_Grafische.Confirmation.resources
 C:\Users\Jeremie\Desktop\School ict\Rijk\App 2017_2018\Voorraad-Beheer\Code_Project\Voorraadbeheer-Grafische\Voorraadbeheer-Grafische\obj\Debug\Voorraadbeheer_Grafische.Add_Change_Medewerker.resources
 C:\Users\Jeremie\Desktop\School ict\Rijk\App 2017_2018\Voorraad-Beheer\Code_Project\Voorraadbeheer-Grafische\Voorraadbeheer-Grafische\obj\Debug\Voorraadbeheer_Grafische.Add_Change_Artikel.resources
+C:\Users\Jeremie\Desktop\School ict\Rijk\App 2017_2018\Voorraad-Beheer\Code_Project\Voorraadbeheer-Grafische\Voorraadbeheer-Grafische\obj\Debug\Voorraadbeheer_Grafische.Winkel_Beheer.resources
