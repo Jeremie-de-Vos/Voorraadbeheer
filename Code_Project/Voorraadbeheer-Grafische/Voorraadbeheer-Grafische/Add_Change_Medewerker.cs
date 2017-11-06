@@ -15,6 +15,7 @@ namespace Voorraadbeheer_Grafische
         //Variable
         public Function func;
         public int AccLogin;
+        public bool accepeted = false;
         public Admin fm;
 
         //Main
@@ -48,10 +49,6 @@ namespace Voorraadbeheer_Grafische
             int output;
             if (Int32.TryParse(Telefoonnr_txt.Text, out output))
             {
-            }
-            else
-            {
-                MessageBox.Show("This is not a good telephone number!!");
             }
 
 
@@ -89,11 +86,22 @@ namespace Voorraadbeheer_Grafische
                     LoginNaam_txt.Text = DATA.Medewerkers[i].LoginNaam;
                     Wachtwoord_txt.Text = DATA.Medewerkers[i].Wachtwoord;
 
-                    //functie
-                    //gender
+                    //Functie
+                    if (DATA.Medewerkers[i].Functie == Medwerker_Function.Admin)
+                        Functie_cb.SelectedIndex = 3;
+                    else if (DATA.Medewerkers[i].Functie == Medwerker_Function.Magazijn)
+                        Functie_cb.SelectedIndex = 2;
+                    else if (DATA.Medewerkers[i].Functie == Medwerker_Function.Winkel)
+                        Functie_cb.SelectedIndex = 1;
+
+                    //Gender
+                    if (DATA.Medewerkers[i].Geslacht == "Man")
+                        Geslacht_cb.SelectedIndex = 0;
+                    else if (DATA.Medewerkers[i].Geslacht == "Vrouw")
+                        Geslacht_cb.SelectedIndex = 1;
                 }
         }
-        private void Change(int id)
+        private void ApllyChange(int id)
         {
             for (int i = 0; i < DATA.Medewerkers.Count; i++)
                 if (DATA.Medewerkers[i].ID == id)
@@ -107,7 +115,7 @@ namespace Voorraadbeheer_Grafische
                     DATA.Medewerkers[i].Wachtwoord = Wachtwoord_txt.Text;
 
                     DATA.Medewerkers[i].Functie = DATA.Func(Functie_cb.Text);
-                    //add gender
+                    DATA.Medewerkers[i].Geslacht = Geslacht_cb.Text;
 
 
 
@@ -118,9 +126,56 @@ namespace Voorraadbeheer_Grafische
                     this.Close();
                 }
         }
-        private void CheckFieldInputs()
+        private void CheckFieldInputs(Function function)
         {
+            string naam = Naam_txt.Text;
+            string achternaam = Achternaam_txt.Text;
+            string email = Email_txt.Text;
+            string telefoonnr = Telefoonnr_txt.Text;
 
+            string loginnaam = LoginNaam_txt.Text;
+            string wachtwoord = Wachtwoord_txt.Text;
+            Medwerker_Function func = DATA.Func(Functie_cb.Text);
+            string geslacht = Geslacht_cb.Text;
+
+            if (naam != String.Empty && achternaam != String.Empty && email != String.Empty && telefoonnr != String.Empty && loginnaam != String.Empty && wachtwoord != String.Empty && geslacht != String.Empty)
+            {
+                for (int i = 0; i < DATA.Medewerkers.Count; i++)
+                    if (DATA.Artikellen[i].Naam.ToLower() == naam.ToLower())
+                    {
+                        Message_lbl.Text = "Er bestaat al een Medewerker met deze naam!";
+                        accepeted = false;
+                        if(DATA.Medewerkers[i].LoginNaam.ToLower() == loginnaam.ToLower() && function == Function.Nieuw)
+                        {
+                            Message_lbl.Text = "Er bestaat al een Medewerker met deze login naam!";
+                            accepeted = false;
+                        }
+                    }
+                    else
+                        accepeted = true;
+
+                if (accepeted)
+                    if (function == Function.Nieuw)
+                        Add();
+                    else if (function == Function.Wijzig)
+                        ApllyChange(DATA.SelectedID_werknemers);
+            }
+            else if (naam == String.Empty)
+                Message_lbl.Text = "Er is nog geen NAAM ingevuld!";
+            else if (achternaam == String.Empty)
+                Message_lbl.Text = "Er is nog geen ACHTERNAAM ingevuld!";
+            else if (email == String.Empty)
+                Message_lbl.Text = "Er is nog geen EMAIL ADRES ingevuld!";
+            else if (telefoonnr == String.Empty)
+                Message_lbl.Text = "Er is nog geen TELEFOON NR ingevuld!";
+            else if (loginnaam == String.Empty)
+                Message_lbl.Text = "Er is nog geen LOGIN NAAM ingevuld!";
+            else if (wachtwoord == String.Empty)
+                Message_lbl.Text = "Er is nog geen WACHTWOORD ingevuld!";
+            else if (Functie_cb.Text == "None")
+                Message_lbl.Text = "Er is nog geen FUNCTIE ingevuld!";
+            else if (geslacht == String.Empty)
+                Message_lbl.Text = "Er is nog geen GESLACHT ingevuld!";
         }
 
         //General-events
@@ -133,11 +188,22 @@ namespace Voorraadbeheer_Grafische
         private void Accepteer_lbl_Click(object sender, EventArgs e)
         {
             if (func == Function.Nieuw)
-                Add();
+                CheckFieldInputs(Function.Nieuw);
             else if (func == Function.Wijzig)
             {
-                Change(DATA.SelectedID_werknemers);
+                CheckFieldInputs(Function.Wijzig);
             }
+        }
+
+        private void Telefoonnr_txt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                Message_lbl.Text = "Dat is geen nummer!";
+            }
+            else
+                Message_lbl.Text = "";
         }
     }
 }

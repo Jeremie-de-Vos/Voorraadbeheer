@@ -30,51 +30,74 @@ namespace Voorraadbeheer_Grafische
         public static List<Medewerker> Medewerkers = new List<Medewerker>();
         public static List<Artikel> Artikellen = new List<Artikel>();
         
-        //Convert String to (Categorie/Function enum)
-        public static Categorie Cat(string input)
+        //Categorie - Convert
+        public static Art_Categorie Cat(string input)
         {
             if (input == "Zaal")
-                return Categorie.Zaal;
+                return Art_Categorie.Zaal;
             else if (input == "Straat")
-                return Categorie.Straat;
+                return Art_Categorie.Straat;
             else if (input == "Veld")
-                return Categorie.Veld;
+                return Art_Categorie.Veld;
             else
-                return Categorie.error;
+                return Art_Categorie.error;
         }
-        public static Functie Func(string input)
+        public static string Cat_enum(Art_Categorie input)
+        {
+            if (input == Art_Categorie.Straat)
+                return "Straat";
+            else if (input == Art_Categorie.Veld)
+                return "Veld";
+            else if (input == Art_Categorie.Zaal)
+                return "Zaal";
+            else
+                return "error";
+        }
+        //functie - Convert
+        public static Medwerker_Function Func(string input)
         {
             if (input == "Magazijn")
-                return Functie.Magazijn;
+                return Medwerker_Function.Magazijn;
             else if (input == "Winkel")
-                return Functie.Winkel;
+                return Medwerker_Function.Winkel;
             else if (input == "Admin")
-                return Functie.Admin;
+                return Medwerker_Function.Admin;
             else
-                return Functie.error;
+                return Medwerker_Function.error;
+        }
+        public static string Func_enum(Medwerker_Function input)
+        {
+            if (input == Medwerker_Function.Admin)
+                return "Admin";
+            else if (input == Medwerker_Function.Magazijn)
+                return "Magazijn";
+            else if (input == Medwerker_Function.Winkel)
+                return "Winkel";
+            else
+                return "error";
         }
 
         //-------------<Hardcoded>---------------------
         public static void Art_Rawdata()
         {
-            Artikellen.Add(new Artikel(1, "Naam1", "Merk", Categorie.Straat, 40, 21, 10, 41, 41, "Maat", 500, "Laatst Gewijzigd", "Gewijzigd door"));
-            Artikellen.Add(new Artikel(2, "Naam2", "Merk", Categorie.Straat, 40, 21, 10, 41, 41, "Maat", 500, "Laatst Gewijzigd", "Gewijzigd door"));
-            Artikellen.Add(new Artikel(3, "Naam3", "Merk", Categorie.Straat, 40, 21, 10, 41, 41, "Maat", 500, "Laatst Gewijzigd", "Gewijzigd door"));
-            Artikellen.Add(new Artikel(4, "Naam4", "Merk", Categorie.Straat, 40, 21, 10, 41, 41, "Maat", 500, "Laatst Gewijzigd", "Gewijzigd door"));
-            Artikellen.Add(new Artikel(5, "Naam5", "Merk", Categorie.Straat, 40, 21, 10, 41, 41, "Maat", 500, "Laatst Gewijzigd", "Gewijzigd door"));
-            Artikellen.Add(new Artikel(6, "Naam6", "Merk", Categorie.Straat, 40, 21, 10, 41, 41, "Maat", 500, "Laatst Gewijzigd", "Gewijzigd door"));
-            Artikellen.Add(new Artikel(7, "Naam7", "Merk", Categorie.Straat, 40, 21, 10, 41, 41, "Maat", 500, "Laatst Gewijzigd", "Gewijzigd door"));
+            Artikellen.Add(new Artikel(1, "Naam1", "Merk", Art_Categorie.Straat, 40, 21, 10, 41, 41, "Maat", 500, "Laatst Gewijzigd", "Gewijzigd door"));
+            Artikellen.Add(new Artikel(2, "Naam2", "Merk", Art_Categorie.Straat, 40, 21, 10, 41, 41, "Maat", 500, "Laatst Gewijzigd", "Gewijzigd door"));
+            Artikellen.Add(new Artikel(3, "Naam3", "Merk", Art_Categorie.Straat, 40, 21, 10, 41, 41, "Maat", 500, "Laatst Gewijzigd", "Gewijzigd door"));
+            Artikellen.Add(new Artikel(4, "Naam4", "Merk", Art_Categorie.Straat, 40, 21, 10, 41, 41, "Maat", 500, "Laatst Gewijzigd", "Gewijzigd door"));
+            Artikellen.Add(new Artikel(5, "Naam5", "Merk", Art_Categorie.Straat, 40, 21, 10, 41, 41, "Maat", 500, "Laatst Gewijzigd", "Gewijzigd door"));
+            Artikellen.Add(new Artikel(6, "Naam6", "Merk", Art_Categorie.Straat, 40, 21, 10, 41, 41, "Maat", 500, "Laatst Gewijzigd", "Gewijzigd door"));
+            Artikellen.Add(new Artikel(7, "Naam7", "Merk", Art_Categorie.Straat, 40, 21, 10, 41, 41, "Maat", 500, "Laatst Gewijzigd", "Gewijzigd door"));
         }
         public static void Mede_Rawdata()
         {
-            Medewerkers.Add(new Medewerker(1, "Jeremie", "Achternaam", ".@gmail.com", "Gelacht", Functie.Admin, "Admin", "1", "img path", 0681701360, "AanmaakDatum", "LaatstIngelogd", "LaatsteVersie"));
+            Medewerkers.Add(new Medewerker(1, "Jeremie", "Achternaam", ".@gmail.com", "Gelacht", Medwerker_Function.Admin, "Admin", "1", "img path", 0681701360, "AanmaakDatum", "LaatstIngelogd", "LaatsteVersie"));
 
-            Medewerkers.Add(new Medewerker(2, "Naam2", "Achternaam", ".@gmail.com", "Gelacht", Functie.Admin, "Admin", "w", "img path", 0681701360, "AanmaakDatum", "LaatstIngelogd", "LaatsteVersie"));
-            Medewerkers.Add(new Medewerker(3, "Naam3", "Achternaam", ".@gmail.com", "Gelacht", Functie.Magazijn, "Magazijn", "w", "img path", 0681701360, "AanmaakDatum", "LaatstIngelogd", "LaatsteVersie"));
-            Medewerkers.Add(new Medewerker(4, "Naam4", "Achternaam", ".@gmail.com", "Gelacht", Functie.Winkel, "Winkel", "w", "img path", 0681701360, "AanmaakDatum", "LaatstIngelogd", "LaatsteVersie"));
+            Medewerkers.Add(new Medewerker(2, "Naam2", "Achternaam", ".@gmail.com", "Gelacht", Medwerker_Function.Admin, "Admin", "w", "img path", 0681701360, "AanmaakDatum", "LaatstIngelogd", "LaatsteVersie"));
+            Medewerkers.Add(new Medewerker(3, "Naam3", "Achternaam", ".@gmail.com", "Gelacht", Medwerker_Function.Magazijn, "Magazijn", "w", "img path", 0681701360, "AanmaakDatum", "LaatstIngelogd", "LaatsteVersie"));
+            Medewerkers.Add(new Medewerker(4, "Naam4", "Achternaam", ".@gmail.com", "Gelacht", Medwerker_Function.Winkel, "Winkel", "w", "img path", 0681701360, "AanmaakDatum", "LaatstIngelogd", "LaatsteVersie"));
 
-            Medewerkers.Add(new Medewerker(5, "Naam5", "Achternaam", ".@gmail.com", "Gelacht", Functie.Magazijn, "LoginNaam", "Wachtwoord", "img path", 0681701360, "AanmaakDatum", "LaatstIngelogd", "LaatsteVersie"));
-            Medewerkers.Add(new Medewerker(6, "Naam6", "Achternaam", ".@gmail.com", "Gelacht", Functie.Magazijn, "LoginNaam", "Wachtwoord", "img path", 0681701360, "AanmaakDatum", "LaatstIngelogd", "LaatsteVersie"));
+            Medewerkers.Add(new Medewerker(5, "Naam5", "Achternaam", ".@gmail.com", "Gelacht", Medwerker_Function.Magazijn, "LoginNaam", "Wachtwoord", "img path", 0681701360, "AanmaakDatum", "LaatstIngelogd", "LaatsteVersie"));
+            Medewerkers.Add(new Medewerker(6, "Naam6", "Achternaam", ".@gmail.com", "Gelacht", Medwerker_Function.Magazijn, "LoginNaam", "Wachtwoord", "img path", 0681701360, "AanmaakDatum", "LaatstIngelogd", "LaatsteVersie"));
         }
 
         //-------------<Save - Load>---------------------
@@ -217,7 +240,7 @@ namespace Voorraadbeheer_Grafische
 }
 //------------------------<Lists>----------------------------------
 //Medewerkers
-public enum Functie
+public enum Medwerker_Function
 {
     Winkel,
     Magazijn,
@@ -231,7 +254,7 @@ public class Medewerker
     public string Achternaam;
     public string Email;
     public string Geslacht;
-    public Functie Functie;
+    public Medwerker_Function Functie;
 
     public string LoginNaam;
     public string Wachtwoord;
@@ -243,7 +266,7 @@ public class Medewerker
     public string LaatstIngelogd;
     public string LaatstVersie;
 
-    public Medewerker(int id,string naam,string achternaam,string email,string geslacht,Functie functie,string loginNaam,string wachtwoord,string pf_Path,int telnr,string aanmaaktDatum,string laatstIngelogd,string laatstVersie)
+    public Medewerker(int id,string naam,string achternaam,string email,string geslacht,Medwerker_Function functie,string loginNaam,string wachtwoord,string pf_Path,int telnr,string aanmaaktDatum,string laatstIngelogd,string laatstVersie)
     {
         ID = id;
         Naam = naam;
@@ -265,7 +288,7 @@ public class Medewerker
 }
 
 //Artikellen
-public enum Categorie
+public enum Art_Categorie
 {
     Zaal,
     Straat,
@@ -277,7 +300,7 @@ public class Artikel
     public int ID;
     public string Naam;
     public string Merk;
-    public Categorie Categorie;
+    public Art_Categorie Categorie;
 
     //prijzen
     public double Inkoopprijs;
@@ -292,7 +315,7 @@ public class Artikel
     public string LaatstGewijzigd;
     public string GewijzigdDoor;
 
-    public Artikel(int iD,string naam,string merk,Categorie categorie, double inkoopprijs, int btw, double winst, double inc_btw, double ex_btw,string maat,int voorraad, string laatstGewijzigd, string gewijzigdDoor)
+    public Artikel(int iD,string naam,string merk,Art_Categorie categorie, double inkoopprijs, int btw, double winst, double inc_btw, double ex_btw,string maat,int voorraad, string laatstGewijzigd, string gewijzigdDoor)
     {
         ID = iD;
         Naam = naam;

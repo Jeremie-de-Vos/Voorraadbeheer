@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Voorraadbeheer_Grafische
 {
@@ -194,6 +195,11 @@ namespace Voorraadbeheer_Grafische
         //General-Events
         private void Close_btn_Click(object sender, EventArgs e)
         {
+            //chart1.Series.Add("Series2");
+            //chart1.Series["Series2"].ChartType = SeriesChartType.Column;
+            //chart1.Series["Series2"].Points.AddY(220);
+            //chart1.Series["Series2"].ChartArea = "ChartArea1";
+
             Environment.Exit(0);
         }
 
@@ -266,7 +272,7 @@ namespace Voorraadbeheer_Grafische
         //Chart
         private void tabControl_TabIndexChanged(object sender, EventArgs e)
         {
-            chart1.Series["Amount"].Points.AddXY("peter", 1000);
+            chart1.Series["Series1"].Points.AddXY("peter", 100);
         }
     }
 }

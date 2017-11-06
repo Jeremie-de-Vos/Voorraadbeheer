@@ -52,6 +52,7 @@
             this.Functie_cb = new System.Windows.Forms.ComboBox();
             this.Geslacht_cb = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.Message_lbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -190,6 +191,7 @@
             this.Telefoonnr_txt.Name = "Telefoonnr_txt";
             this.Telefoonnr_txt.Size = new System.Drawing.Size(165, 26);
             this.Telefoonnr_txt.TabIndex = 31;
+            this.Telefoonnr_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Telefoonnr_txt_KeyPress);
             // 
             // label6
             // 
@@ -276,11 +278,21 @@
             this.label10.TabIndex = 38;
             this.label10.Text = "Geslacht:";
             // 
-            // Add_Medewerker
+            // Message_lbl
+            // 
+            this.Message_lbl.AutoSize = true;
+            this.Message_lbl.Location = new System.Drawing.Point(164, 429);
+            this.Message_lbl.Name = "Message_lbl";
+            this.Message_lbl.Size = new System.Drawing.Size(54, 17);
+            this.Message_lbl.TabIndex = 40;
+            this.Message_lbl.Text = "label11";
+            // 
+            // Add_Change_Medewerker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(717, 472);
+            this.Controls.Add(this.Message_lbl);
             this.Controls.Add(this.Geslacht_cb);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.Functie_cb);
@@ -306,7 +318,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Close_btn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Add_Medewerker";
+            this.Name = "Add_Change_Medewerker";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add_Medewerker";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -342,5 +354,6 @@
         private System.Windows.Forms.ComboBox Functie_cb;
         private System.Windows.Forms.ComboBox Geslacht_cb;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label Message_lbl;
     }
 }

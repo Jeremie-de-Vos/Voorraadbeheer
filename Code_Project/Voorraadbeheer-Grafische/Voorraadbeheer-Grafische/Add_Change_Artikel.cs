@@ -25,7 +25,6 @@ namespace Voorraadbeheer_Grafische
             InitializeComponent();
             func = Functie;
             AccLogin = loginID;
-            Categorie_cb.SelectedIndex = 0;
 
             if (Functie == Function.Nieuw)
             {
@@ -78,25 +77,34 @@ namespace Voorraadbeheer_Grafische
         private void setup(int id)
         {
             for (int i = 0; i < DATA.Artikellen.Count; i++)
+            {
                 if (DATA.Artikellen[i].ID == id)
                 {
                     Naam_txt.Text = DATA.Artikellen[i].Naam;
                     Merk_txt.Text = DATA.Artikellen[i].Merk;
-                    //cat
                     InkoopPrijs_txt.Text = DATA.Artikellen[i].Inkoopprijs.ToString();
                     Btw_txt.Text = DATA.Artikellen[i].BTW.ToString();
                     Maat_txt.Text = DATA.Artikellen[i].Maat;
                     Voorraad_txt.Text = DATA.Artikellen[i].Voorraad.ToString();
+
+                    //Categorie
+                    if (DATA.Artikellen[i].Categorie == Art_Categorie.Zaal)
+                        Categorie_cb.SelectedIndex = 0;
+                    else if (DATA.Artikellen[i].Categorie == Art_Categorie.Straat)
+                        Categorie_cb.SelectedIndex = 1;
+                    else if (DATA.Artikellen[i].Categorie == Art_Categorie.Veld)
+                        Categorie_cb.SelectedIndex = 2;
                 }
+            }
         }
-        private void Change(int id)
+        private void ApplyChange(int id)
         {
             for (int i = 0; i < DATA.Artikellen.Count; i++)
                 if (DATA.Artikellen[i].ID == id)
                 {
                     DATA.Artikellen[i].Naam = Naam_txt.Text;
                     DATA.Artikellen[i].Merk = Merk_txt.Text;
-                    //cat
+                    DATA.Artikellen[i].Categorie = DATA.Cat(Categorie_cb.Text);
                     DATA.Artikellen[i].Inkoopprijs = Int32.Parse(InkoopPrijs_txt.Text);
                     DATA.Artikellen[i].BTW = Int32.Parse(Btw_txt.Text);
                     DATA.Artikellen[i].Maat = Maat_txt.Text;
@@ -112,12 +120,12 @@ namespace Voorraadbeheer_Grafische
                     this.Close();
                 }
         }
-        private void CheckFieldInputs()
+        private void CheckFieldInputs(Function function)
         {
             //Set
             string naam = Naam_txt.Text;
             string merk = Merk_txt.Text;
-            Categorie categorie = DATA.Cat(Categorie_cb.Text);
+            Art_Categorie categorie = DATA.Cat(Categorie_cb.Text);
             string inkoopprijs = InkoopPrijs_txt.Text;
             string btw = Btw_txt.Text;
             string maat = Maat_txt.Text;
@@ -127,7 +135,7 @@ namespace Voorraadbeheer_Grafische
             if (naam != String.Empty && merk != String.Empty && inkoopprijs != String.Empty && btw != String.Empty && maat != String.Empty && voorraad != String.Empty)
             {
                 for (int i = 0; i < DATA.Artikellen.Count; i++)
-                    if (DATA.Artikellen[i].Naam.ToLower() == naam.ToLower())
+                    if (DATA.Artikellen[i].Naam.ToLower() == naam.ToLower() && function == Function.Nieuw)
                     {
                         Message_lbl.Text = "Er bestaat al een artikel met deze naam!";
                         accepeted = false;
@@ -136,7 +144,10 @@ namespace Voorraadbeheer_Grafische
                         accepeted = true;
 
                 if (accepeted)
-                    Add();
+                    if (function == Function.Nieuw)
+                        Add();
+                    else if (function == Function.Wijzig)
+                        ApplyChange(DATA.SelectedID_werknemers);
             }
             else if (naam == String.Empty)
                 Message_lbl.Text = "Er is nog geen NAAM ingevuld!";
@@ -162,10 +173,10 @@ namespace Voorraadbeheer_Grafische
         private void Accepteer_lbl_Click(object sender, EventArgs e)
         {
             if (func == Function.Nieuw)
-                CheckFieldInputs();
+                CheckFieldInputs(Function.Nieuw);
             else if (func == Function.Wijzig)
             {
-                Change(DATA.SelectedID_Voorraad_Details);
+                CheckFieldInputs(Function.Wijzig);
             }
         }
 
