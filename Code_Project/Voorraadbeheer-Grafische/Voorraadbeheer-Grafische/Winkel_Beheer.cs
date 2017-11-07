@@ -144,7 +144,7 @@ namespace Voorraadbeheer_Grafische
             Search();
         }
 
-        //Change voorraad
+        //Change voorraad - events
         private void Voorraad_txt_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && (!char.IsDigit(e.KeyChar))
@@ -168,6 +168,8 @@ namespace Voorraadbeheer_Grafische
                     {
                         int choice;
                         string input = Voorraad_txt.Text;
+
+                        //Check if it is a number!
                         if (Int32.TryParse(input, out choice))
                         {
                             //Get and show result
@@ -176,7 +178,8 @@ namespace Voorraadbeheer_Grafische
                                 if (DATA.Artikellen[i].ID == ID)
                                 {
                                     //Calculate Output
-                                    int Output = DATA.Artikellen[i].Voorraad += Int32.Parse(input);
+                                    int voorrraad = DATA.Artikellen[i].Voorraad;
+                                    int Output = voorrraad += Int32.Parse(input);
 
                                     if (Output <= -1)
                                     {
@@ -185,7 +188,7 @@ namespace Voorraadbeheer_Grafische
                                     else
                                     {
                                         //Change has been accepted
-                                        MessageBox.Show("hi");
+                                        DATA.Artikellen[i].Voorraad += Int32.Parse(input);
                                     }
                                 }
                             }
