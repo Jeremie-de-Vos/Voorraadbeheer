@@ -280,12 +280,13 @@
             // 
             // Message_lbl
             // 
-            this.Message_lbl.AutoSize = true;
-            this.Message_lbl.Location = new System.Drawing.Point(164, 429);
+            this.Message_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.Message_lbl.Location = new System.Drawing.Point(105, 429);
             this.Message_lbl.Name = "Message_lbl";
-            this.Message_lbl.Size = new System.Drawing.Size(54, 17);
+            this.Message_lbl.Size = new System.Drawing.Size(468, 17);
             this.Message_lbl.TabIndex = 40;
             this.Message_lbl.Text = "label11";
+            this.Message_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Add_Change_Medewerker
             // 

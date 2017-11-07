@@ -25,6 +25,7 @@ namespace Voorraadbeheer_Grafische
             InitializeComponent();
             func = Functie;
             AccLogin = loginID;
+            Message_lbl.Text = String.Empty;
 
             if (Functie == Function.Nieuw)
             {

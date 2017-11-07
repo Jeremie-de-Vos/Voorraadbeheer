@@ -84,20 +84,22 @@
             // Loguit_btn
             // 
             this.Loguit_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Loguit_btn.Location = new System.Drawing.Point(982, 47);
+            this.Loguit_btn.Location = new System.Drawing.Point(971, 40);
             this.Loguit_btn.Name = "Loguit_btn";
-            this.Loguit_btn.Size = new System.Drawing.Size(80, 19);
+            this.Loguit_btn.Size = new System.Drawing.Size(49, 19);
             this.Loguit_btn.TabIndex = 19;
             this.Loguit_btn.Text = "Loguit";
             // 
             // GebruikersNaam_lbl
             // 
+            this.GebruikersNaam_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.GebruikersNaam_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GebruikersNaam_lbl.Location = new System.Drawing.Point(935, 25);
+            this.GebruikersNaam_lbl.Location = new System.Drawing.Point(892, 16);
             this.GebruikersNaam_lbl.Name = "GebruikersNaam_lbl";
-            this.GebruikersNaam_lbl.Size = new System.Drawing.Size(158, 24);
+            this.GebruikersNaam_lbl.Size = new System.Drawing.Size(201, 24);
             this.GebruikersNaam_lbl.TabIndex = 18;
             this.GebruikersNaam_lbl.Text = "Jeremie de Vos";
+            this.GebruikersNaam_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Admin_lbl
             // 

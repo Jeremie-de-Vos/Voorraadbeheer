@@ -22,6 +22,8 @@ namespace Voorraadbeheer_Grafische
             InitializeComponent();
             frm = this;
             Naam_txt.Focus();
+            Warning_lbl.Text = String.Empty;
+
 
             //Load - Data
             //Artikellen
@@ -67,7 +69,6 @@ namespace Voorraadbeheer_Grafische
                     }
                     else if (DATA.Medewerkers[i].Functie.ToString() == "Winkel")
                     {
-                        MessageBox.Show("Winkel");
                         DATA.LoginID = DATA.Medewerkers[i].ID;
                         Winkel_Beheer frm = new Winkel_Beheer(DATA.Medewerkers[i].ID);
                         frm.Show();
@@ -76,6 +77,7 @@ namespace Voorraadbeheer_Grafische
                     else if (DATA.Medewerkers[i].Functie.ToString() == "Magazijn")
                     {
                         MessageBox.Show("Magazijn");
+                        //launch console
                     }
                 }
                 else

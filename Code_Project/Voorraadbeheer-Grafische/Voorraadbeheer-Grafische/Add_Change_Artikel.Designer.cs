@@ -260,12 +260,13 @@
             // 
             // Message_lbl
             // 
-            this.Message_lbl.AutoSize = true;
+            this.Message_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.Message_lbl.Location = new System.Drawing.Point(155, 436);
             this.Message_lbl.Name = "Message_lbl";
-            this.Message_lbl.Size = new System.Drawing.Size(46, 17);
+            this.Message_lbl.Size = new System.Drawing.Size(418, 17);
             this.Message_lbl.TabIndex = 55;
             this.Message_lbl.Text = "label6";
+            this.Message_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Add_Change_Artikel
             // 

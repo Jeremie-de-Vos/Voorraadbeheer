@@ -112,11 +112,13 @@
             // 
             // Warning_lbl
             // 
+            this.Warning_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.Warning_lbl.Location = new System.Drawing.Point(188, 350);
             this.Warning_lbl.Name = "Warning_lbl";
             this.Warning_lbl.Size = new System.Drawing.Size(350, 17);
             this.Warning_lbl.TabIndex = 8;
             this.Warning_lbl.Text = "U kunt nog (3) keer proberen voor de applicatie afsluit";
+            this.Warning_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 

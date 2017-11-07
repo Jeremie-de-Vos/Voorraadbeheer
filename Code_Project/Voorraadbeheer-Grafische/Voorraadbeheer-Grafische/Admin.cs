@@ -272,7 +272,6 @@ namespace Voorraadbeheer_Grafische
         //Chart
         private void tabControl_TabIndexChanged(object sender, EventArgs e)
         {
-            chart1.Series["Series1"].Points.AddXY("peter", 100);
         }
     }
 }

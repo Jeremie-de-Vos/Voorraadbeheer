@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Voorraadbeheer-Grafische", "Voorraadbeheer-Grafische\Voorraadbeheer-Grafische.csproj", "{7DAAF59F-3638-4637-AD76-89CC5483117E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "voorraadbeheer", "..\Voorraad\voorraadbeheer\voorraadbeheer\voorraadbeheer.csproj", "{271D67FA-0A74-480E-B484-4FA2D24EABAB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7DAAF59F-3638-4637-AD76-89CC5483117E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DAAF59F-3638-4637-AD76-89CC5483117E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DAAF59F-3638-4637-AD76-89CC5483117E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{271D67FA-0A74-480E-B484-4FA2D24EABAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{271D67FA-0A74-480E-B484-4FA2D24EABAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{271D67FA-0A74-480E-B484-4FA2D24EABAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{271D67FA-0A74-480E-B484-4FA2D24EABAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
