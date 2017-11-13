@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Voorraadbeheer_Grafische;
 
 namespace voorraadbeheer
 {
@@ -11,12 +12,14 @@ namespace voorraadbeheer
     {
         ///====================================<Variable>=====================================
         //List - Artikellen
-        public static List<Artikelen> art = new List<Artikelen>();
+        //public static List<Artikelen> art = new List<Artikelen>();
 
         //Login - Wachtwoord
-        public static string ww ="1";
+        public static string ww;
         public static string UserName;
-        public static int Login_try = 3;
+
+        public static int Maxlogintry = 3;
+        public static int Currlogintry = 1;
 
         //Key - Indentifier
         public static string Key_Indetifier = "#";
@@ -32,13 +35,81 @@ namespace voorraadbeheer
         //Main
         static void Main(string[] args)
         {   //Check if save file exist
-            if (File.Exists(SavePath))
-                art = Load();
+            if (File.Exists(DATA.SavePath_Art))
+                DATA.Artikellen = DATA.Load_Artikellen();
+            //DATA.Artikellen = DATA.Load_Artikellen();
             else
-                RawDATA();
+                DATA.Art_Rawdata();
+            //Medewerkers
+            if (File.Exists(DATA.SavePath_Medewerkers))
+                DATA.Medewerkers = DATA.Load_Medewerkers();
+            else
+                DATA.Mede_Rawdata();
 
             GetLogName();
         }
+
+        //Login-Wachtwoord
+        public static void GetLogName()
+        {
+            Console.Clear();
+
+            Console.WriteLine("Welkom! login om verder te gaan.");
+            Console.WriteLine("Typ nu uw Login naam in:");
+            UserName = Console.ReadLine();
+            for (int i = 0; i < DATA.Medewerkers.Count; i++)
+            {
+                if (UserName == DATA.Medewerkers[i].LoginNaam)
+                {
+                    GetWW();
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("Deze login naam bestaat niet");
+                    Console.WriteLine("Druk een knop om verder te gaan!");
+                    Console.ReadKey();
+                    GetLogName();
+                }
+            }
+        }
+        public static void GetWW()
+        {
+            Console.Clear();
+            Console.WriteLine("Welkom " + UserName);
+            Console.WriteLine("Typ nu uw Wachtwoord in a.u.b.:");
+            ww = Console.ReadLine();
+            CheckLogin();
+        }
+        public static void CheckLogin()
+        {
+            bool tst = true;
+            for (int i = 0; i < DATA.Medewerkers.Count; i++)
+            {
+                //Check login naam + wachtwoord
+                if (UserName == DATA.Medewerkers[i].LoginNaam && ww == DATA.Medewerkers[i].Wachtwoord)
+                {
+                    Menu();
+                }
+                else
+                    tst = false;
+            }
+            if (Currlogintry >= Maxlogintry + 1 && !tst)
+            {
+                Console.WriteLine("Wachtwoord fout.\nEr is te vaak geprobeerd in te loggen");
+                Environment.Exit(0);
+            }
+            else
+            {
+                Currlogintry++;
+                Console.WriteLine("Geen juiste combinatie! U kunt nog (" + (Maxlogintry - Currlogintry + 1) + ") keer proberen");
+                Console.WriteLine("Druk een knop om verder te gaan!");
+                Console.ReadKey();
+                GetLogName();
+            }
+        }
+
+        //Menu
         public static void Menu()
         {
             Console.Clear();
@@ -62,66 +133,23 @@ namespace voorraadbeheer
                 switch (choice)
                 {
                     case 1:
-                        FilterCategoriePanel(true, "Voorraad Bekijken");
+                        FilterCategoriePanel(true, "Voorraad Bekijken");//
                         break;
                     case 2:
                         GetID();
                         break;
                     case 3:
-                        Save(art);
+                        DATA.Save_Artikellen(DATA.Artikellen);
                         GetLogName();
                         break;
                     case 4:
-                        Save(art);
+                        DATA.Save_Artikellen(DATA.Artikellen);
                         Environment.Exit(0);
                         break;
                 }
             }
             else
                 Menu();
-        }
-
-        //Login-Wachtwoord
-        public static void GetWW()
-        {
-            Console.Clear();
-            Console.WriteLine("Welkom " + UserName);
-            Console.WriteLine("Typ nu uw Wachtwoord in a.u.b.:");
-            CheckWW(Console.ReadLine());
-        }
-        public static void GetLogName()
-        {
-            Console.Clear();
-
-            Console.WriteLine("Welkom! login om verder te gaan.");
-            Console.WriteLine("Typ nu uw Login naam in:");
-
-            UserName = Console.ReadLine();
-            GetWW();
-        }
-        public static void CheckWW(string Wachtwoord)
-        {
-            if (Login_try >= 1)
-            {
-                //ww
-                if (Wachtwoord == ww)
-                {
-                    Login_try = 3;
-                    Menu();
-                }
-                else
-                {
-                    Console.Clear();
-                    Login_try -= 1;
-                    Console.WriteLine("Verkeerde wachtwoord en naam combinatie. U kunt nog maar " + Login_try + " proberen.");
-                    Console.WriteLine("Typ nu uw wachtwoord opnieuw in....");
-
-                    string wwtry = Console.ReadLine();
-                    CheckWW(wwtry);
-                }
-            }
-            else
-                Environment.Exit(0);
         }
 
         //Filtering-Collecting-Bekijken
@@ -159,29 +187,21 @@ namespace voorraadbeheer
                 {
                     case 1:
                         if (Bekijken)
-                            CollectDATA(Categorie.Zaal);
+                            CollectDATA(Art_Categorie.Zaal);
                         break;
                     case 2:
-                        CollectDATA(Categorie.Straat);
+                        CollectDATA(Art_Categorie.Straat);
                         break;
                     case 3:
-                        CollectDATA(Categorie.Veld); ;
+                        CollectDATA(Art_Categorie.Veld); ;
                         break;
                 }
             }
             else
                 FilterCategoriePanel(Bekijken, FuncName);
         }
-        public static void CollectDATA(Categorie choice)
+        public static void CollectDATA(Art_Categorie choice)
         {
-            //check if int
-            //Check if ID exsists
-
-
-
-
-
-
             //Set Gui
             Console.Clear();
             Console.WriteLine(choice + ": ");
@@ -189,16 +209,16 @@ namespace voorraadbeheer
             //Get - Set all Artikellen
             Console.WriteLine("{0,-5}{1,-10}{2,-10}{3, -10}{4, -10}", "ID:", "Naam:", "Merk:", "Maat:", "Voorraad:");
 
-            for (int i = 0; i < art.Count; i++)
+            for (int i = 0; i < DATA.Artikellen.Count; i++)
             {
-                if (art[i].categorie == choice)
+                if (DATA.Artikellen[i].Categorie == choice)
                 {
                     Console.WriteLine("{0,-5}{1,-10}{2,-10}{3, -10}{4, -10}",
-                        art[i].id,
-                        art[i].Naam,
-                        art[i].Merk,
-                        art[i].Maat,
-                        art[i].Voorraad);
+                        DATA.Artikellen[i].ID,
+                        DATA.Artikellen[i].Naam,
+                        DATA.Artikellen[i].Merk,
+                        DATA.Artikellen[i].Maat,
+                        DATA.Artikellen[i].Voorraad);
                 }
             }
             //Gui input
@@ -265,16 +285,16 @@ namespace voorraadbeheer
             Console.WriteLine("{0,-5}{1,-10}{2,-10}{3, -10}{4, -10}", "ID:", "Naam:", "Merk:", "Maat:", "Voorraad:");
 
             //Set - Get Artikellen
-            for (int i = 0; i < art.Count; i++)
+            for (int i = 0; i < DATA.Artikellen.Count; i++)
             {
-                if (art[i].id == ID)
+                if (DATA.Artikellen[i].ID == ID)
                 {
                     Console.WriteLine("{0,-5}{1,-10}{2,-10}{3, -10}{4, -10}",
-                        art[i].id,
-                        art[i].Naam,
-                        art[i].Merk,
-                        art[i].Maat,
-                        art[i].Voorraad);
+                        DATA.Artikellen[i].ID,
+                        DATA.Artikellen[i].Naam,
+                        DATA.Artikellen[i].Merk,
+                        DATA.Artikellen[i].Maat,
+                        DATA.Artikellen[i].Voorraad);
                 }
             }
             Wijzig(ID);
@@ -293,12 +313,12 @@ namespace voorraadbeheer
                 if (Int32.TryParse(input, out choice))
                 {
                     //Get and show result
-                    for (int i = 0; i < art.Count; i++)
+                    for (int i = 0; i < DATA.Artikellen.Count; i++)
                     {
-                        if (art[i].id == ID)
+                        if (DATA.Artikellen[i].ID == ID)
                         {
                             //Calculate Output
-                            int Output = art[i].Voorraad += Int32.Parse(input);
+                            int Output = DATA.Artikellen[i].Voorraad += Int32.Parse(input);
 
                             if (Output <= -1)
                             {
@@ -346,23 +366,6 @@ namespace voorraadbeheer
             Console.WriteLine("Druk "+Key_Back+" om terug te gaan!");
             Console.WriteLine();
         }
-        public static void RawDATA()
-        {
-            Random rnd = new Random();
-            //straat
-            art.Add(new Artikelen("Straat1", "Merk", 1, Categorie.Straat, rnd.Next(40, 130), rnd.Next(40, 130), rnd.Next(40, 130), rnd.Next(40, 60)));
-            art.Add(new Artikelen("Straat2", "Merk", 2, Categorie.Straat, rnd.Next(40, 130), rnd.Next(40, 130), rnd.Next(40, 130), rnd.Next(40, 60)));
-
-            //zaal
-            art.Add(new Artikelen("Zaal1", "Merk", 3, Categorie.Zaal, rnd.Next(40, 130), rnd.Next(40, 130), rnd.Next(40, 130), rnd.Next(40, 60)));
-            art.Add(new Artikelen("Zaal2", "Merk", 4, Categorie.Zaal, rnd.Next(40, 130), rnd.Next(40, 130), rnd.Next(40, 130), rnd.Next(40, 60)));
-
-            //Veld
-            art.Add(new Artikelen("Veld1", "Merk", 5, Categorie.Veld, rnd.Next(40, 130), rnd.Next(40, 130), rnd.Next(40, 130), rnd.Next(40, 60)));
-            art.Add(new Artikelen("Veld2", "Merk", 6, Categorie.Veld, rnd.Next(40, 130), rnd.Next(40, 130), rnd.Next(40, 130), rnd.Next(40, 60)));
-
-            Console.WriteLine("Items added");
-        }
         public static string GetPCUsername()
         {
             string Usernamee = Environment.UserName;
@@ -382,81 +385,6 @@ namespace voorraadbeheer
             if (CurState == "Wijzigen")
                 GetID();
         }
-
-        //Saving-Loading
-        public static List<Artikelen> Load()
-        {
-            //First clearing The list incase something is in there
-            art.Clear();
-
-            //Create new list
-            List<Artikelen> a = new List<Artikelen>();
-            foreach (var line in File.ReadLines(SavePath))
-            {
-                //Split sentences when "," is in there
-                List<String> indexes = line.Split(',').ToList<String>();
-
-                //Add DATA to the new created list above here
-                a.Add(new Artikelen((indexes[0]), (indexes[1]), Int32.Parse(indexes[2]),Cat((indexes[3])), Int32.Parse(indexes[4]), float.Parse(indexes[5]), float.Parse(indexes[6]),Int32.Parse(indexes[7])));
-            }
-            //Return the new List with all loaded data
-            return a;
-        }
-        public static void Save(List<Artikelen> voorraad)
-        {
-            //First clear the entire file so there will be no Duplications
-            File.WriteAllText(SavePath, String.Empty);
-            using (TextWriter tw = new StreamWriter(SavePath))
-            {
-                //Write a line with DATA foreach item in the list
-                foreach (Artikelen a in voorraad)
-                    tw.WriteLine(a.Naam + "," + a.Merk + "," + a.id + "," + a.categorie + "," + a.Voorraad + "," + a.prijs_Ex_btw + "," + a.prijs_inc_btw + "," + a.Maat);
-            }
-        }
-
-        //String--->Categorie.type
-        public static Categorie Cat(string input)
-        {
-            if (input == "Zaal")
-                return Categorie.Zaal;
-            else if (input == "Straat")
-                return Categorie.Straat;
-            else if (input == "Veld")
-                return Categorie.Veld;
-            else
-                return Categorie.error;
-        }
-    }
-}
-        //====================================<List - Enum>==================================
-public enum Categorie
-{
-    Zaal,
-    Straat,
-    Veld,
-    error
-}
-public class Artikelen
-{
-    public string Naam;
-    public string Merk;
-    public int id;
-    public Categorie categorie;
-    public int Voorraad;
-    public float prijs_Ex_btw;
-    public float prijs_inc_btw;
-    public int Maat;
-
-    public Artikelen(string naam1, string merk1, int id1, Categorie cat1, int voorraad1, float prijsinc1, float prijsex1, int maat1)
-    {
-        Naam = naam1;
-        Merk = merk1;
-        id = id1;
-        categorie = cat1;
-        Voorraad = voorraad1;
-        prijs_inc_btw = prijsinc1;
-        prijs_Ex_btw = prijsex1;
-        Maat = maat1;
     }
 }
 

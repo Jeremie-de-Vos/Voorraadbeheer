@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,18 @@ namespace Voorraadbeheer_Grafische
         {
             InitializeComponent();
             ID = id;
+
+            //Artikellen
+            if (File.Exists(DATA.SavePath_Art))
+                DATA.Artikellen = DATA.Load_Artikellen();
+            else
+                DATA.Art_Rawdata();
+
+            //Medewerkers
+            if (File.Exists(DATA.SavePath_Medewerkers))
+                DATA.Medewerkers = DATA.Load_Medewerkers();
+            else
+                DATA.Mede_Rawdata();
 
             account_Setup();
             Datagrid_VoorraadDetail_Setup();
@@ -72,10 +85,8 @@ namespace Voorraadbeheer_Grafische
                             );
                     }
             }
-
-            Datagrid_Artikellen.ClearSelection();
-            Datagrid_Artikellen.Rows[selectedrow].Selected = true;
             Datagrid_Artikellen.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DATA.Save_Artikellen(DATA.Artikellen);
         }
         private void Datagrid_Artikellen_SelectionChanged(object sender, EventArgs e)
         {

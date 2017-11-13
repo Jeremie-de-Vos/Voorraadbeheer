@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,18 @@ namespace Voorraadbeheer_Grafische
             InitializeComponent();
             ID = Id;
 
+            //Artikellen
+            if (File.Exists(DATA.SavePath_Art))
+                DATA.Artikellen = DATA.Load_Artikellen();
+            else
+                DATA.Art_Rawdata();
+
+            //Medewerkers
+            if (File.Exists(DATA.SavePath_Medewerkers))
+                DATA.Medewerkers = DATA.Load_Medewerkers();
+            else
+                DATA.Mede_Rawdata();
+
             account_Setup();
             Datagrid_Medewerker_Setup();
             Datagrid_VoorraadDetail_Setup();
@@ -35,6 +48,7 @@ namespace Voorraadbeheer_Grafische
                     DATA.Medewerkers[i].LaatstIngelogd = DateTime.Today.ToShortDateString().ToString();
                     DATA.Medewerkers[i].LaatstVersie = "Grafische";
                 }
+            Datagrid_VoorraadDetail_Setup();
         }
 
         //medewerker
@@ -85,6 +99,7 @@ namespace Voorraadbeheer_Grafische
             Searchbar_txt.Text = null;
             Datagrid_Artikellen.Rows.Clear();
             for (int i = 0; i < DATA.Artikellen.Count; i++)
+            {
                 Datagrid_Artikellen.Rows.Add(
                     DATA.Artikellen[i].ID,
                     DATA.Artikellen[i].Naam,
@@ -92,8 +107,8 @@ namespace Voorraadbeheer_Grafische
                     DATA.Artikellen[i].Maat,
                     DATA.Artikellen[i].Voorraad,
                     DATA.Artikellen[i].Categorie,
-                    DATA.Artikellen[i].Inkoopprijs
-                    );
+                    DATA.Artikellen[i].Inkoopprijs);
+            }
 
             Datagrid_Artikellen.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }

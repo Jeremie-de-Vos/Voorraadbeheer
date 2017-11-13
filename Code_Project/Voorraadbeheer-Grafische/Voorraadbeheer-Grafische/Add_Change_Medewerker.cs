@@ -73,6 +73,7 @@ namespace Voorraadbeheer_Grafische
             Admin frm2 = new Admin(DATA.LoginID);
             frm2.Show();
 
+            DATA.Save_Medewerkers(DATA.Medewerkers);
             this.Close();
         }
         private void setup(int id)
@@ -125,6 +126,7 @@ namespace Voorraadbeheer_Grafische
                     Admin frm2 = new Admin(DATA.LoginID);
                     frm2.Show();
 
+                    DATA.Save_Medewerkers(DATA.Medewerkers);
                     this.Close();
                 }
         }
@@ -142,19 +144,24 @@ namespace Voorraadbeheer_Grafische
 
             if (naam != String.Empty && achternaam != String.Empty && email != String.Empty && telefoonnr != String.Empty && loginnaam != String.Empty && wachtwoord != String.Empty && geslacht != String.Empty)
             {
-                for (int i = 0; i < DATA.Medewerkers.Count; i++)
-                    if (DATA.Artikellen[i].Naam.ToLower() == naam.ToLower())
-                    {
-                        Message_lbl.Text = "Er bestaat al een Medewerker met deze naam!";
-                        accepeted = false;
-                        if(DATA.Medewerkers[i].LoginNaam.ToLower() == loginnaam.ToLower() && function == Function.Nieuw)
+                if (function == Function.Nieuw)
+                {
+                    for (int i = 0; i < DATA.Medewerkers.Count; i++)
+                        if (DATA.Artikellen[i].Naam.ToLower() == naam.ToLower())
                         {
-                            Message_lbl.Text = "Er bestaat al een Medewerker met deze login naam!";
-                            accepeted = false;
+                            Message_lbl.Text = "Er bestaat al een Medewerker met deze naam!";
+                            accepeted = false;//is false
+                            if (DATA.Medewerkers[i].LoginNaam.ToLower() == loginnaam.ToLower() && function == Function.Nieuw)
+                            {
+                                Message_lbl.Text = "Er bestaat al een Medewerker met deze login naam!";
+                                accepeted = false;//is false
+                            }
                         }
-                    }
-                    else
-                        accepeted = true;
+                        else
+                            accepeted = true;
+                }
+                else
+                    accepeted = true;
 
                 if (accepeted)
                     if (function == Function.Nieuw)
@@ -191,10 +198,9 @@ namespace Voorraadbeheer_Grafische
         {
             if (func == Function.Nieuw)
                 CheckFieldInputs(Function.Nieuw);
-            else if (func == Function.Wijzig)
-            {
+            else 
+            if (func == Function.Wijzig)
                 CheckFieldInputs(Function.Wijzig);
-            }
         }
 
         private void Telefoonnr_txt_KeyPress(object sender, KeyPressEventArgs e)

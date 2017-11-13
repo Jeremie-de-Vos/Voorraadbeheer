@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Sql;
+using System.Data.SqlClient;
 
 namespace Voorraadbeheer_Grafische
 {
@@ -179,7 +181,7 @@ namespace Voorraadbeheer_Grafische
         public static List<Medewerker> Load_Medewerkers()
         {
             //First clearing The list incase something is in there
-            Artikellen.Clear();
+            Medewerkers.Clear();
 
             //Create new list
             List<Medewerker> a = new List<Medewerker>();

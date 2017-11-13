@@ -73,6 +73,7 @@ namespace Voorraadbeheer_Grafische
             Admin frm2 = new Admin(DATA.LoginID);
             frm2.Show();
 
+            DATA.Save_Artikellen(DATA.Artikellen);
             this.Close();
         }
         private void setup(int id)
@@ -118,6 +119,7 @@ namespace Voorraadbeheer_Grafische
                     Admin frm2 = new Admin(DATA.LoginID);
                     frm2.Show();
 
+                    DATA.Save_Artikellen(DATA.Artikellen);
                     this.Close();
                 }
         }
@@ -135,14 +137,19 @@ namespace Voorraadbeheer_Grafische
             //Check inputfields
             if (naam != String.Empty && merk != String.Empty && inkoopprijs != String.Empty && btw != String.Empty && maat != String.Empty && voorraad != String.Empty)
             {
-                for (int i = 0; i < DATA.Artikellen.Count; i++)
-                    if (DATA.Artikellen[i].Naam.ToLower() == naam.ToLower() && function == Function.Nieuw)
-                    {
-                        Message_lbl.Text = "Er bestaat al een artikel met deze naam!";
-                        accepeted = false;
-                    }
-                    else
-                        accepeted = true;
+                if (function == Function.Nieuw)
+                {
+                    for (int i = 0; i < DATA.Artikellen.Count; i++)
+                        if (DATA.Artikellen[i].Naam.ToLower() == naam.ToLower() && function == Function.Nieuw)
+                        {
+                            Message_lbl.Text = "Er bestaat al een artikel met deze naam!";
+                            accepeted = false;
+                        }
+                        else
+                            accepeted = true;
+                }
+                else
+                    accepeted = true;
 
                 if (accepeted)
                     if (function == Function.Nieuw)
@@ -169,16 +176,16 @@ namespace Voorraadbeheer_Grafische
         {
             MessageBox.Show("Verandering zal niet worden opgeslagen!");
             fm.Show();
+            DATA.Save_Artikellen(DATA.Artikellen);
             this.Close();
         }
         private void Accepteer_lbl_Click(object sender, EventArgs e)
         {
             if (func == Function.Nieuw)
                 CheckFieldInputs(Function.Nieuw);
-            else if (func == Function.Wijzig)
-            {
+            else 
+            if (func == Function.Wijzig)
                 CheckFieldInputs(Function.Wijzig);
-            }
         }
 
         //Numbers - events
