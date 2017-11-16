@@ -85,7 +85,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CompanyLogo_pb = new System.Windows.Forms.PictureBox();
             this.Close_btn = new System.Windows.Forms.Button();
-            this.database1DataSet1 = new Voorraadbeheer_Grafische.Database1DataSet();
             this.tabControl.SuspendLayout();
             this.Werknemer_tab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Werknemers)).BeginInit();
@@ -93,7 +92,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Datagrid_Artikellen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyLogo_pb)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.database1DataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // CompanyName_lbl
@@ -128,11 +126,14 @@
             // Loguit_btn
             // 
             this.Loguit_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Loguit_btn.Location = new System.Drawing.Point(971, 40);
+            this.Loguit_btn.Location = new System.Drawing.Point(965, 40);
             this.Loguit_btn.Name = "Loguit_btn";
-            this.Loguit_btn.Size = new System.Drawing.Size(51, 19);
+            this.Loguit_btn.Size = new System.Drawing.Size(57, 19);
             this.Loguit_btn.TabIndex = 8;
             this.Loguit_btn.Text = "Loguit";
+            this.Loguit_btn.Click += new System.EventHandler(this.Loguit_btn_Click);
+            this.Loguit_btn.MouseEnter += new System.EventHandler(this.Loguit_btn_MouseEnter);
+            this.Loguit_btn.MouseLeave += new System.EventHandler(this.Loguit_btn_MouseLeave);
             // 
             // tabControl
             // 
@@ -143,7 +144,6 @@
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(1055, 454);
             this.tabControl.TabIndex = 9;
-            this.tabControl.TabIndexChanged += new System.EventHandler(this.tabControl_TabIndexChanged);
             // 
             // Werknemer_tab
             // 
@@ -668,11 +668,6 @@
             this.Close_btn.UseVisualStyleBackColor = true;
             this.Close_btn.Click += new System.EventHandler(this.Close_btn_Click);
             // 
-            // database1DataSet1
-            // 
-            this.database1DataSet1.DataSetName = "Database1DataSet";
-            this.database1DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -704,7 +699,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Datagrid_Artikellen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyLogo_pb)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.database1DataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -769,6 +763,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Prijs_Colum_Admin;
         private System.Windows.Forms.Button Delete_art_btn;
         private System.Windows.Forms.Button Wijzig_art_btn;
-        private Database1DataSet database1DataSet1;
     }
 }

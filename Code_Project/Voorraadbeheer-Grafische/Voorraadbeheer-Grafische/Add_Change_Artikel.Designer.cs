@@ -61,7 +61,7 @@
             this.Merk_txt.Location = new System.Drawing.Point(54, 241);
             this.Merk_txt.Name = "Merk_txt";
             this.Merk_txt.Size = new System.Drawing.Size(165, 26);
-            this.Merk_txt.TabIndex = 39;
+            this.Merk_txt.TabIndex = 2;
             // 
             // label4
             // 
@@ -78,7 +78,7 @@
             this.Naam_txt.Location = new System.Drawing.Point(54, 174);
             this.Naam_txt.Name = "Naam_txt";
             this.Naam_txt.Size = new System.Drawing.Size(165, 26);
-            this.Naam_txt.TabIndex = 37;
+            this.Naam_txt.TabIndex = 1;
             // 
             // label3
             // 
@@ -95,7 +95,7 @@
             this.Accepteer_lbl.Location = new System.Drawing.Point(579, 427);
             this.Accepteer_lbl.Name = "Accepteer_lbl";
             this.Accepteer_lbl.Size = new System.Drawing.Size(74, 33);
-            this.Accepteer_lbl.TabIndex = 35;
+            this.Accepteer_lbl.TabIndex = 8;
             this.Accepteer_lbl.Text = "Add";
             this.Accepteer_lbl.UseVisualStyleBackColor = true;
             this.Accepteer_lbl.Click += new System.EventHandler(this.Accepteer_lbl_Click);
@@ -115,7 +115,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(264, 37);
             this.label2.TabIndex = 33;
-            this.label2.Text = "Medewerker Toevoegen";
+            this.label2.Text = "Artikel Toevoegen";
             // 
             // flowLayoutPanel1
             // 
@@ -162,6 +162,7 @@
             this.Close_btn.Name = "Close_btn";
             this.Close_btn.Size = new System.Drawing.Size(45, 45);
             this.Close_btn.TabIndex = 28;
+            this.Close_btn.TabStop = false;
             this.Close_btn.UseVisualStyleBackColor = true;
             this.Close_btn.Click += new System.EventHandler(this.Close_btn_Click);
             // 
@@ -180,7 +181,7 @@
             this.Voorraad_txt.Location = new System.Drawing.Point(488, 174);
             this.Voorraad_txt.Name = "Voorraad_txt";
             this.Voorraad_txt.Size = new System.Drawing.Size(165, 26);
-            this.Voorraad_txt.TabIndex = 43;
+            this.Voorraad_txt.TabIndex = 7;
             this.Voorraad_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Voorraad_txt_KeyPress);
             // 
             // label8
@@ -198,7 +199,7 @@
             this.Maat_txt.Location = new System.Drawing.Point(276, 309);
             this.Maat_txt.Name = "Maat_txt";
             this.Maat_txt.Size = new System.Drawing.Size(165, 26);
-            this.Maat_txt.TabIndex = 53;
+            this.Maat_txt.TabIndex = 6;
             this.Maat_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Maat_txt_KeyPress);
             // 
             // label9
@@ -216,7 +217,7 @@
             this.Btw_txt.Location = new System.Drawing.Point(276, 241);
             this.Btw_txt.Name = "Btw_txt";
             this.Btw_txt.Size = new System.Drawing.Size(165, 26);
-            this.Btw_txt.TabIndex = 51;
+            this.Btw_txt.TabIndex = 5;
             this.Btw_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Btw_txt_KeyPress);
             // 
             // label10
@@ -234,7 +235,7 @@
             this.InkoopPrijs_txt.Location = new System.Drawing.Point(276, 174);
             this.InkoopPrijs_txt.Name = "InkoopPrijs_txt";
             this.InkoopPrijs_txt.Size = new System.Drawing.Size(165, 26);
-            this.InkoopPrijs_txt.TabIndex = 49;
+            this.InkoopPrijs_txt.TabIndex = 4;
             this.InkoopPrijs_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InkoopPrijs_txt_KeyPress);
             // 
             // label11
@@ -256,7 +257,7 @@
             this.Categorie_cb.Location = new System.Drawing.Point(54, 312);
             this.Categorie_cb.Name = "Categorie_cb";
             this.Categorie_cb.Size = new System.Drawing.Size(165, 24);
-            this.Categorie_cb.TabIndex = 54;
+            this.Categorie_cb.TabIndex = 3;
             // 
             // Message_lbl
             // 

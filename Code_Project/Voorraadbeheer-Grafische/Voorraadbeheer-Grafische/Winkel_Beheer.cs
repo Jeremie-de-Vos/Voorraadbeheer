@@ -16,6 +16,7 @@ namespace Voorraadbeheer_Grafische
         //Variable
         public static int ID;
         public int selectedrow;
+        public static Login lg;
 
         //Main
         public Winkel_Beheer(int id)
@@ -43,6 +44,7 @@ namespace Voorraadbeheer_Grafische
         //Setup
         private void account_Setup()
         {
+            //Setting up acc info
             for (int i = 0; i < DATA.Medewerkers.Count; i++)
                 if (ID == DATA.Medewerkers[i].ID)
                 {
@@ -55,7 +57,10 @@ namespace Voorraadbeheer_Grafische
         //Voorraad
         private void Datagrid_VoorraadDetail_Setup()
         {
+            //Check null voorrraad and filter
             Datagrid_Artikellen.Rows.Clear();
+
+            //If null
             if (Null_Voorraad_Checkbox.Checked)
             {
                 for (int i = 0; i < DATA.Artikellen.Count; i++)
@@ -71,6 +76,7 @@ namespace Voorraadbeheer_Grafische
             }
             else
             {
+                //if not null
                 for (int i = 0; i < DATA.Artikellen.Count; i++)
                     if (DATA.Artikellen[i].Voorraad != 0)
                     {
@@ -88,18 +94,6 @@ namespace Voorraadbeheer_Grafische
             Datagrid_Artikellen.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DATA.Save_Artikellen(DATA.Artikellen);
         }
-        private void Datagrid_Artikellen_SelectionChanged(object sender, EventArgs e)
-        {
-            if (Datagrid_Artikellen.SelectedCells.Count > 0)
-            {
-                //int value;
-               // string input = Datagrid_Artikellen.SelectedCells[0].Value.ToString();
-               // if (int.TryParse(input, out value))
-               // {
-               //     DATA.SelectedID_Voorraad_Details = value;
-                //}
-            }
-        }
 
         //Search
         private void Search()
@@ -108,6 +102,7 @@ namespace Voorraadbeheer_Grafische
             Datagrid_Artikellen.Rows.Clear();
             String searchValue = search_txt;
 
+            //Check if null voorraad
             if (Null_Voorraad_Checkbox.Checked)
             {
                 for (int i = 0; i < DATA.Artikellen.Count; i++)
@@ -158,11 +153,12 @@ namespace Voorraadbeheer_Grafische
         //Change voorraad - events
         private void Voorraad_txt_KeyPress(object sender, KeyPressEventArgs e)
         {
+            //allow minus and dot  and numbers
             if (!char.IsControl(e.KeyChar) && (!char.IsDigit(e.KeyChar))
                     && (e.KeyChar != '.') && (e.KeyChar != '-'))
                 e.Handled = true;
 
-            // only allow minus sign at the beginning
+            //only allow minus sign at the beginning
             if (e.KeyChar == '-' && (sender as TextBox).Text.Length > 0)
                 e.Handled = true;
         }
@@ -208,6 +204,23 @@ namespace Voorraadbeheer_Grafische
                 }
                 Datagrid_VoorraadDetail_Setup();
             }
+        }
+
+        //Logout
+        private void Loguit_btn_Click(object sender, EventArgs e)
+        {
+            lg.Show();
+            this.Close();
+        }
+        private void Loguit_btn_MouseEnter(object sender, EventArgs e)
+        {
+            Loguit_btn.ForeColor = Color.CadetBlue;
+            Loguit_btn.Font = new Font(Loguit_btn.Font, FontStyle.Bold);
+        }
+        private void Loguit_btn_MouseLeave(object sender, EventArgs e)
+        {
+            Loguit_btn.ForeColor = Color.Black;
+            Loguit_btn.Font = new Font(Loguit_btn.Font, FontStyle.Regular);
         }
     }
 }

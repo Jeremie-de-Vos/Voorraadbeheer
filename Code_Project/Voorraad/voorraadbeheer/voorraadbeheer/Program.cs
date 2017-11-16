@@ -339,6 +339,7 @@ namespace voorraadbeheer
                             {
                                 //Change has been accepted
                                 Console.WriteLine(Output);
+                                DATA.Save_Artikellen(DATA.Artikellen);
                                 SetIDinfo(ID);
                             }
                         }

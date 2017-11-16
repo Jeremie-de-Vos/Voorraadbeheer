@@ -63,7 +63,7 @@
             this.Accepteer_lbl.Location = new System.Drawing.Point(579, 427);
             this.Accepteer_lbl.Name = "Accepteer_lbl";
             this.Accepteer_lbl.Size = new System.Drawing.Size(74, 33);
-            this.Accepteer_lbl.TabIndex = 23;
+            this.Accepteer_lbl.TabIndex = 9;
             this.Accepteer_lbl.Text = "Add";
             this.Accepteer_lbl.UseVisualStyleBackColor = true;
             this.Accepteer_lbl.Click += new System.EventHandler(this.Accepteer_lbl_Click);
@@ -130,6 +130,7 @@
             this.Close_btn.Name = "Close_btn";
             this.Close_btn.Size = new System.Drawing.Size(45, 45);
             this.Close_btn.TabIndex = 16;
+            this.Close_btn.TabStop = false;
             this.Close_btn.UseVisualStyleBackColor = true;
             this.Close_btn.Click += new System.EventHandler(this.Close_btn_Click);
             // 
@@ -139,7 +140,7 @@
             this.Naam_txt.Location = new System.Drawing.Point(54, 174);
             this.Naam_txt.Name = "Naam_txt";
             this.Naam_txt.Size = new System.Drawing.Size(165, 26);
-            this.Naam_txt.TabIndex = 25;
+            this.Naam_txt.TabIndex = 1;
             // 
             // label3
             // 
@@ -156,7 +157,7 @@
             this.Achternaam_txt.Location = new System.Drawing.Point(54, 241);
             this.Achternaam_txt.Name = "Achternaam_txt";
             this.Achternaam_txt.Size = new System.Drawing.Size(165, 26);
-            this.Achternaam_txt.TabIndex = 27;
+            this.Achternaam_txt.TabIndex = 2;
             // 
             // label4
             // 
@@ -173,7 +174,7 @@
             this.Email_txt.Location = new System.Drawing.Point(54, 307);
             this.Email_txt.Name = "Email_txt";
             this.Email_txt.Size = new System.Drawing.Size(165, 26);
-            this.Email_txt.TabIndex = 29;
+            this.Email_txt.TabIndex = 3;
             // 
             // label5
             // 
@@ -190,7 +191,7 @@
             this.Telefoonnr_txt.Location = new System.Drawing.Point(54, 377);
             this.Telefoonnr_txt.Name = "Telefoonnr_txt";
             this.Telefoonnr_txt.Size = new System.Drawing.Size(165, 26);
-            this.Telefoonnr_txt.TabIndex = 31;
+            this.Telefoonnr_txt.TabIndex = 4;
             this.Telefoonnr_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Telefoonnr_txt_KeyPress);
             // 
             // label6
@@ -217,7 +218,7 @@
             this.Wachtwoord_txt.Location = new System.Drawing.Point(279, 241);
             this.Wachtwoord_txt.Name = "Wachtwoord_txt";
             this.Wachtwoord_txt.Size = new System.Drawing.Size(165, 26);
-            this.Wachtwoord_txt.TabIndex = 35;
+            this.Wachtwoord_txt.TabIndex = 6;
             // 
             // label8
             // 
@@ -234,7 +235,7 @@
             this.LoginNaam_txt.Location = new System.Drawing.Point(279, 174);
             this.LoginNaam_txt.Name = "LoginNaam_txt";
             this.LoginNaam_txt.Size = new System.Drawing.Size(165, 26);
-            this.LoginNaam_txt.TabIndex = 33;
+            this.LoginNaam_txt.TabIndex = 5;
             // 
             // label9
             // 
@@ -256,7 +257,7 @@
             this.Functie_cb.Location = new System.Drawing.Point(279, 306);
             this.Functie_cb.Name = "Functie_cb";
             this.Functie_cb.Size = new System.Drawing.Size(165, 24);
-            this.Functie_cb.TabIndex = 37;
+            this.Functie_cb.TabIndex = 7;
             // 
             // Geslacht_cb
             // 
@@ -267,7 +268,7 @@
             this.Geslacht_cb.Location = new System.Drawing.Point(279, 380);
             this.Geslacht_cb.Name = "Geslacht_cb";
             this.Geslacht_cb.Size = new System.Drawing.Size(165, 24);
-            this.Geslacht_cb.TabIndex = 39;
+            this.Geslacht_cb.TabIndex = 8;
             // 
             // label10
             // 

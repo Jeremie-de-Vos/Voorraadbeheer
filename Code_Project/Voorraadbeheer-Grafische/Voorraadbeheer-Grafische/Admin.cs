@@ -16,6 +16,7 @@ namespace Voorraadbeheer_Grafische
     {
         //Variable-Main
         public static int ID;
+        public static Login lg;
         public Admin(int Id)
         {
             InitializeComponent();
@@ -41,6 +42,7 @@ namespace Voorraadbeheer_Grafische
         //Setup
         private void account_Setup()
         {
+            //Update acc info
             for (int i = 0; i < DATA.Medewerkers.Count; i++)
                 if (ID == DATA.Medewerkers[i].ID)
                 {
@@ -51,9 +53,10 @@ namespace Voorraadbeheer_Grafische
             Datagrid_VoorraadDetail_Setup();
         }
 
-        //medewerker
+        //Medewerker
         private void Datagrid_Medewerker_Setup()
         {
+            //Setup medewerkers Datagrid
             Searchbar_txt.Text = null;
             DataGrid_Werknemers.Rows.Clear();
             for (int i = 0; i < DATA.Medewerkers.Count; i++)
@@ -69,6 +72,7 @@ namespace Voorraadbeheer_Grafische
         }
         private void StaticInfo_Medewerker_Setup(int Id)
         {
+            //Update static info from Selected Medewerker in DataGrid
             for (int i = 0; i < DATA.Medewerkers.Count; i++)
                 if (Id == DATA.Medewerkers[i].ID)
                 {
@@ -84,9 +88,11 @@ namespace Voorraadbeheer_Grafische
             if(DataGrid_Werknemers.SelectedCells.Count > 0)
             {
                 int value;
+                //Get id from selected DataRow
                 string input = DataGrid_Werknemers.SelectedCells[0].Value.ToString();
                 if (int.TryParse(input, out value))
                 {
+                    //Update info
                     DATA.SelectedID_werknemers = value;
                     StaticInfo_Medewerker_Setup(value);
                 }
@@ -96,6 +102,7 @@ namespace Voorraadbeheer_Grafische
         //Voorraad
         private void Datagrid_VoorraadDetail_Setup()
         {
+            //Update Voorraad info in DataGrid
             Searchbar_txt.Text = null;
             Datagrid_Artikellen.Rows.Clear();
             for (int i = 0; i < DATA.Artikellen.Count; i++)
@@ -114,6 +121,7 @@ namespace Voorraadbeheer_Grafische
         }
         private void StaticInfo_VoorraadDetail_Setup(int Id)
         {
+            //Update Static info from the selected DataRow
             for (int i = 0; i < DATA.Artikellen.Count; i++)
                 if (Id == DATA.Artikellen[i].ID)
                 {
@@ -123,7 +131,7 @@ namespace Voorraadbeheer_Grafische
 
                     double IncBTw = ((DATA.Artikellen[i].Inkoopprijs/100.00) * (100.00 + DATA.Artikellen[i].BTW));
 
-                    //set
+                    //set info
                     art_Btw_lbl.Text = DATA.Artikellen[i].BTW.ToString()+"%";                                       //Btw
                     art_IncBtw_lbl.Text = IncBTw.ToString();                                                        //IncBtw
                     art_ExBtw_lbl.Text = DATA.Artikellen[i].Inkoopprijs.ToString();                                 //ExBtw
@@ -139,9 +147,11 @@ namespace Voorraadbeheer_Grafische
             if (Datagrid_Artikellen.SelectedCells.Count > 0)
             {
                 int value;
+                //Get id from selected DataRow
                 string input = Datagrid_Artikellen.SelectedCells[0].Value.ToString();
                 if (int.TryParse(input, out value))
                 {
+                    //Update info
                     DATA.SelectedID_Voorraad_Details = value;
                     StaticInfo_VoorraadDetail_Setup(value);
                 }
@@ -151,15 +161,18 @@ namespace Voorraadbeheer_Grafische
         //Search
         private void Search()
         {
-            
+            //Get Search txt
             string search_txt = Searchbar_txt.Text.ToLower();
 
+            //Medewerker tab
             if (tabControl.SelectedIndex == 0)
             {
                 DataGrid_Werknemers.Rows.Clear();
                 String searchValue = search_txt;
 
+                //if medewerker contains search txt
                 for (int i = 0; i < DATA.Medewerkers.Count; i++)
+                    //Update Datagrid info
                     if (DATA.Medewerkers[i].Naam.ToLower().Contains(searchValue))
                     {
                         DataGrid_Werknemers.Rows.Add(
@@ -171,12 +184,16 @@ namespace Voorraadbeheer_Grafische
                         DATA.Medewerkers[i].Functie.ToString());
                     }
             }
-            else if (tabControl.SelectedIndex == 1)
+            else
+            //Medewerker tab
+            if (tabControl.SelectedIndex == 1)
             {
                 Datagrid_Artikellen.Rows.Clear();
                 String searchValue = search_txt;
 
+                //if medewerker contains search txt
                 for (int i = 0; i < DATA.Artikellen.Count; i++)
+                    //Update Datagrid info
                     if (DATA.Artikellen[i].Naam.ToLower().Contains(searchValue))
                     {
                         Datagrid_Artikellen.Rows.Add(
@@ -197,6 +214,7 @@ namespace Voorraadbeheer_Grafische
         }
         private void Searchbar_txt_KeyDown(object sender, KeyEventArgs e)
         {
+            //if enter
             if (e.KeyCode == Keys.Enter)
             {
                 Search();
@@ -207,15 +225,10 @@ namespace Voorraadbeheer_Grafische
             Search();
         }
 
-        //General-Events
-        private void Close_btn_Click(object sender, EventArgs e)
-        {
-            Environment.Exit(0);
-        }
-
         //Nieuw Account - Wijzigen werknemers - Delete Account
         private void New_Acc_btn_Click(object sender, EventArgs e)
         {
+            //make new account
             Add_Change_Medewerker frm1 = new Add_Change_Medewerker(this,Function.Nieuw, ID);
             frm1.Show();
             this.Hide();
@@ -280,10 +293,28 @@ namespace Voorraadbeheer_Grafische
                     }
             }
         }
-        
-        //Chart
-        private void tabControl_TabIndexChanged(object sender, EventArgs e)
+
+        //Logout
+        private void Loguit_btn_Click(object sender, EventArgs e)
         {
+            lg.Show();
+            this.Close();
+        }
+        private void Loguit_btn_MouseEnter(object sender, EventArgs e)
+        {
+            Loguit_btn.ForeColor = Color.CadetBlue;
+            Loguit_btn.Font = new Font(Loguit_btn.Font, FontStyle.Bold);
+        }
+        private void Loguit_btn_MouseLeave(object sender, EventArgs e)
+        {
+            Loguit_btn.ForeColor = Color.Black;
+            Loguit_btn.Font = new Font(Loguit_btn.Font, FontStyle.Regular);
+        }
+
+        //General-Events
+        private void Close_btn_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

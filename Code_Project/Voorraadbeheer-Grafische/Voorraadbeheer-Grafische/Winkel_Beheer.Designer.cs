@@ -89,6 +89,9 @@
             this.Loguit_btn.Size = new System.Drawing.Size(49, 19);
             this.Loguit_btn.TabIndex = 19;
             this.Loguit_btn.Text = "Loguit";
+            this.Loguit_btn.Click += new System.EventHandler(this.Loguit_btn_Click);
+            this.Loguit_btn.MouseEnter += new System.EventHandler(this.Loguit_btn_MouseEnter);
+            this.Loguit_btn.MouseLeave += new System.EventHandler(this.Loguit_btn_MouseLeave);
             // 
             // GebruikersNaam_lbl
             // 

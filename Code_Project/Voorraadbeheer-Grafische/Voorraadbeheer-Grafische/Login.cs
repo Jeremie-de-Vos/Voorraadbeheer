@@ -40,6 +40,7 @@ namespace Voorraadbeheer_Grafische
 
         public void Check_fields()
         {
+            //Check if all text boxes are filled
             if (Naam_txt.Text == "" && Wachtwoor_txt.Text == "")
                 Warning_lbl.Text = "Vul eerst alles in om door te gaan!";
             else if (Naam_txt.Text == "")
@@ -58,24 +59,33 @@ namespace Voorraadbeheer_Grafische
                 //Check login naam + wachtwoord
                 if (Naam_txt.Text == DATA.Medewerkers[i].LoginNaam && Wachtwoor_txt.Text == DATA.Medewerkers[i].Wachtwoord)
                 {
+                    //Login successfull
                     Warning_lbl.Text = "Succes!!!!";
+
+                    //Admin
                     if (DATA.Medewerkers[i].Functie.ToString() == "Admin")
                     {
                         DATA.LoginID = DATA.Medewerkers[i].ID;
                         Admin frm = new Admin(DATA.Medewerkers[i].ID);
+                        Admin.lg = this;
                         frm.Show();
                         this.Hide();
                     }
-                    else if (DATA.Medewerkers[i].Functie.ToString() == "Winkel")
+                    else 
+                    //Winkel
+                    if (DATA.Medewerkers[i].Functie.ToString() == "Winkel")
                     {
                         DATA.LoginID = DATA.Medewerkers[i].ID;
                         Winkel_Beheer frm = new Winkel_Beheer(DATA.Medewerkers[i].ID);
+                        Winkel_Beheer.lg = this;
                         frm.Show();
                         this.Hide();
                     }
-                    else if (DATA.Medewerkers[i].Functie.ToString() == "Magazijn")
+                    else 
+                    //Magazijn
+                    if (DATA.Medewerkers[i].Functie.ToString() == "Magazijn")
                     {
-                        MessageBox.Show("Magazijn");
+                        MessageBox.Show("Magazijn: Launch Console app!!!");
                         //launch console
                     }
                 }
@@ -84,6 +94,7 @@ namespace Voorraadbeheer_Grafische
 
 
             }
+            //Over amount of logintrys
             if (Currlogintry >= Maxlogintry+1 && !tst)
             {
                 MessageBox.Show("Wachtwoord fout.\nEr is te vaak geprobeerd in te loggen");
@@ -91,6 +102,7 @@ namespace Voorraadbeheer_Grafische
             }
             else
             {
+                //Failed
                 Currlogintry++;
                 Warning_lbl.Text = "Geen juiste combinatie! U kunt nog (" + (Maxlogintry - Currlogintry + 1) + ") keer proberen";
                 Naam_txt.Text = null;
@@ -99,6 +111,7 @@ namespace Voorraadbeheer_Grafische
         }
         private  void account_Setup()
         {
+            //Set Info
             for (int i = 0; i < DATA.Medewerkers.Count; i++)
                 if (DATA.LoginID == DATA.Medewerkers[i].ID)
                 {
