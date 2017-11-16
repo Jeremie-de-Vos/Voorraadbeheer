@@ -30,15 +30,15 @@ namespace Voorraadbeheer_Grafische
             if (Functie == Function.Nieuw)
             {
                 //Functie_cb.SelectedIndex = 0;
-                label2.Text = "Medewerker Toevoegen";
+                label2.Text = "Artikel Toevoegen";
                 Accepteer_lbl.Text = "Add";
 
             }
             else if (Functie == Function.Wijzig)
             {
-                label2.Text = "Medewerker Wijzigen";
+                label2.Text = "Artikel Wijzigen";
                 Accepteer_lbl.Text = "Apply";
-                setup(DATA.SelectedID_werknemers);
+                setup(DATA.SelectedID_Voorraad_Details);
             }
             fm = fm1;
 
@@ -70,10 +70,10 @@ namespace Voorraadbeheer_Grafische
                 accname
                 ));
 
+            DATA.Save_Artikellen(DATA.Artikellen);
             Admin frm2 = new Admin(DATA.LoginID);
             frm2.Show();
 
-            DATA.Save_Artikellen(DATA.Artikellen);
             this.Close();
         }
         private void setup(int id)
@@ -99,11 +99,13 @@ namespace Voorraadbeheer_Grafische
                 }
             }
         }
+        int ID;
         private void ApplyChange(int id)
         {
             for (int i = 0; i < DATA.Artikellen.Count; i++)
                 if (DATA.Artikellen[i].ID == id)
                 {
+                    ID = id;
                     DATA.Artikellen[i].Naam = Naam_txt.Text;
                     DATA.Artikellen[i].Merk = Merk_txt.Text;
                     DATA.Artikellen[i].Categorie = DATA.Cat(Categorie_cb.Text);
@@ -115,14 +117,14 @@ namespace Voorraadbeheer_Grafische
                     DATA.Artikellen[i].LaatstGewijzigd = DateTime.Now.ToString();
                     DATA.Artikellen[i].GewijzigdDoor = accname;
 
+                    DATA.Save_Artikellen(DATA.Artikellen);
+
                     MessageBox.Show("Succesfully changed!");
                     Admin frm2 = new Admin(DATA.LoginID);
                     frm2.Show();
-
-                    DATA.Save_Artikellen(DATA.Artikellen);
                     this.Close();
                 }
-        }
+         }
         private void CheckFieldInputs(Function function)
         {
             //Set
@@ -155,7 +157,7 @@ namespace Voorraadbeheer_Grafische
                     if (function == Function.Nieuw)
                         Add();
                     else if (function == Function.Wijzig)
-                        ApplyChange(DATA.SelectedID_werknemers);
+                        ApplyChange(DATA.SelectedID_Voorraad_Details);
             }
             else if (naam == String.Empty)
                 Message_lbl.Text = "Er is nog geen NAAM ingevuld!";

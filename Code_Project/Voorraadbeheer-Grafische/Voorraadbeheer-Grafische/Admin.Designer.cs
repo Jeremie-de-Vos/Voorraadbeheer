@@ -177,7 +177,7 @@
             this.Delete_Medew_Acc.Location = new System.Drawing.Point(0, 394);
             this.Delete_Medew_Acc.Name = "Delete_Medew_Acc";
             this.Delete_Medew_Acc.Size = new System.Drawing.Size(70, 31);
-            this.Delete_Medew_Acc.TabIndex = 28;
+            this.Delete_Medew_Acc.TabIndex = 2;
             this.Delete_Medew_Acc.Text = "Delete";
             this.Delete_Medew_Acc.UseVisualStyleBackColor = true;
             this.Delete_Medew_Acc.Click += new System.EventHandler(this.Delete_Medew_Acc_Click);
@@ -188,7 +188,7 @@
             this.Wijzig_btn.Location = new System.Drawing.Point(248, 390);
             this.Wijzig_btn.Name = "Wijzig_btn";
             this.Wijzig_btn.Size = new System.Drawing.Size(162, 35);
-            this.Wijzig_btn.TabIndex = 27;
+            this.Wijzig_btn.TabIndex = 3;
             this.Wijzig_btn.Text = "Wijzig Account";
             this.Wijzig_btn.UseVisualStyleBackColor = true;
             this.Wijzig_btn.Click += new System.EventHandler(this.Wijzig_btn_Click);
@@ -199,7 +199,7 @@
             this.New_Acc_btn.Location = new System.Drawing.Point(846, 388);
             this.New_Acc_btn.Name = "New_Acc_btn";
             this.New_Acc_btn.Size = new System.Drawing.Size(162, 35);
-            this.New_Acc_btn.TabIndex = 12;
+            this.New_Acc_btn.TabIndex = 4;
             this.New_Acc_btn.Text = "Nieuw Account";
             this.New_Acc_btn.UseVisualStyleBackColor = true;
             this.New_Acc_btn.Click += new System.EventHandler(this.New_Acc_btn_Click);
@@ -411,7 +411,7 @@
             this.Delete_art_btn.Location = new System.Drawing.Point(0, 394);
             this.Delete_art_btn.Name = "Delete_art_btn";
             this.Delete_art_btn.Size = new System.Drawing.Size(70, 31);
-            this.Delete_art_btn.TabIndex = 30;
+            this.Delete_art_btn.TabIndex = 5;
             this.Delete_art_btn.Text = "Delete";
             this.Delete_art_btn.UseVisualStyleBackColor = true;
             this.Delete_art_btn.Click += new System.EventHandler(this.Delete_art_btn_Click);
@@ -422,7 +422,7 @@
             this.Wijzig_art_btn.Location = new System.Drawing.Point(263, 388);
             this.Wijzig_art_btn.Name = "Wijzig_art_btn";
             this.Wijzig_art_btn.Size = new System.Drawing.Size(162, 35);
-            this.Wijzig_art_btn.TabIndex = 29;
+            this.Wijzig_art_btn.TabIndex = 6;
             this.Wijzig_art_btn.Text = "Wijzig Artikel";
             this.Wijzig_art_btn.UseVisualStyleBackColor = true;
             this.Wijzig_art_btn.Click += new System.EventHandler(this.Wijzig_art_btn_Click);
@@ -471,7 +471,7 @@
             this.newArt_btn.Location = new System.Drawing.Point(846, 388);
             this.newArt_btn.Name = "newArt_btn";
             this.newArt_btn.Size = new System.Drawing.Size(162, 35);
-            this.newArt_btn.TabIndex = 27;
+            this.newArt_btn.TabIndex = 7;
             this.newArt_btn.Text = "Nieuw Artikel";
             this.newArt_btn.UseVisualStyleBackColor = true;
             this.newArt_btn.Click += new System.EventHandler(this.newArt_btn_Click);
@@ -622,7 +622,7 @@
             this.Searchbar_txt.Location = new System.Drawing.Point(78, 79);
             this.Searchbar_txt.Name = "Searchbar_txt";
             this.Searchbar_txt.Size = new System.Drawing.Size(183, 24);
-            this.Searchbar_txt.TabIndex = 2;
+            this.Searchbar_txt.TabIndex = 1;
             this.Searchbar_txt.TextChanged += new System.EventHandler(this.Searchbar_txt_TextChanged);
             this.Searchbar_txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Searchbar_txt_KeyDown);
             // 
@@ -663,7 +663,8 @@
             this.Close_btn.Location = new System.Drawing.Point(1099, 12);
             this.Close_btn.Name = "Close_btn";
             this.Close_btn.Size = new System.Drawing.Size(45, 45);
-            this.Close_btn.TabIndex = 1;
+            this.Close_btn.TabIndex = 40;
+            this.Close_btn.TabStop = false;
             this.Close_btn.UseVisualStyleBackColor = true;
             this.Close_btn.Click += new System.EventHandler(this.Close_btn_Click);
             // 

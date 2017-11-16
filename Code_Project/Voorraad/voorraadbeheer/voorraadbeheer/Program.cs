@@ -21,6 +21,9 @@ namespace voorraadbeheer
         public static int Maxlogintry = 3;
         public static int Currlogintry = 1;
 
+        //Login user
+        public static int ID;
+
         //Key - Indentifier
         public static string Key_Indetifier = "#";
         public static string Key_Back = Key_Indetifier + 9.ToString();
@@ -57,21 +60,7 @@ namespace voorraadbeheer
             Console.WriteLine("Welkom! login om verder te gaan.");
             Console.WriteLine("Typ nu uw Login naam in:");
             UserName = Console.ReadLine();
-            for (int i = 0; i < DATA.Medewerkers.Count; i++)
-            {
-                if (UserName == DATA.Medewerkers[i].LoginNaam)
-                {
-                    GetWW();
-                }
-                else
-                {
-                    Console.Clear();
-                    Console.WriteLine("Deze login naam bestaat niet");
-                    Console.WriteLine("Druk een knop om verder te gaan!");
-                    Console.ReadKey();
-                    GetLogName();
-                }
-            }
+            GetWW();
         }
         public static void GetWW()
         {
@@ -83,17 +72,26 @@ namespace voorraadbeheer
         }
         public static void CheckLogin()
         {
-            bool tst = true;
+            bool tst = false;
             for (int i = 0; i < DATA.Medewerkers.Count; i++)
             {
                 //Check login naam + wachtwoord
                 if (UserName == DATA.Medewerkers[i].LoginNaam && ww == DATA.Medewerkers[i].Wachtwoord)
                 {
-                    Menu();
+                    ID = DATA.Medewerkers[i].ID;
+                    tst = true;
                 }
-                else
-                    tst = false;
             }
+
+            if(tst)
+            {
+                Menu();
+                account_Setup();
+            }
+
+
+
+
             if (Currlogintry >= Maxlogintry + 1 && !tst)
             {
                 Console.WriteLine("Wachtwoord fout.\nEr is te vaak geprobeerd in te loggen");
@@ -109,6 +107,16 @@ namespace voorraadbeheer
             }
         }
 
+        public static void account_Setup()
+        {
+            for (int i = 0; i < DATA.Medewerkers.Count; i++)
+                if (ID == DATA.Medewerkers[i].ID)
+                {
+                    DATA.Medewerkers[i].LaatstIngelogd = DateTime.Today.ToShortDateString().ToString();
+                    DATA.Medewerkers[i].LaatstVersie = "Console";
+                    DATA.Save_Medewerkers(DATA.Medewerkers);
+                }
+        }
         //Menu
         public static void Menu()
         {

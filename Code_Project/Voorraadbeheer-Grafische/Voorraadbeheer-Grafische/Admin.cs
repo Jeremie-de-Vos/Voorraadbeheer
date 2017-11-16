@@ -210,11 +210,6 @@ namespace Voorraadbeheer_Grafische
         //General-Events
         private void Close_btn_Click(object sender, EventArgs e)
         {
-            //chart1.Series.Add("Series2");
-            //chart1.Series["Series2"].ChartType = SeriesChartType.Column;
-            //chart1.Series["Series2"].Points.AddY(220);
-            //chart1.Series["Series2"].ChartArea = "ChartArea1";
-
             Environment.Exit(0);
         }
 
@@ -246,6 +241,7 @@ namespace Voorraadbeheer_Grafische
                     if (DATA.Medewerkers[i].ID == ID)
                     {
                         DATA.Medewerkers.Remove(DATA.Medewerkers[i]);
+                        DATA.Save_Medewerkers(DATA.Medewerkers);
                         Datagrid_Medewerker_Setup();
                     }
             }
@@ -279,6 +275,7 @@ namespace Voorraadbeheer_Grafische
                     if (DATA.Artikellen[i].ID == ID)
                     {
                         DATA.Artikellen.Remove(DATA.Artikellen[i]);
+                        DATA.Save_Artikellen(DATA.Artikellen);
                         Datagrid_VoorraadDetail_Setup();
                     }
             }

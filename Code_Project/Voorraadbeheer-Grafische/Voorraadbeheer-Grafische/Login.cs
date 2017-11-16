@@ -25,11 +25,10 @@ namespace Voorraadbeheer_Grafische
             Warning_lbl.Text = String.Empty;
 
 
-            //Load - Data
+
             //Artikellen
             if (File.Exists(DATA.SavePath_Art))
-                DATA.Art_Rawdata();
-            //DATA.Artikellen = DATA.Load_Artikellen();
+                DATA.Artikellen = DATA.Load_Artikellen();
             else
                 DATA.Art_Rawdata();
             //Medewerkers
@@ -82,6 +81,8 @@ namespace Voorraadbeheer_Grafische
                 }
                 else
                     tst = false;
+
+
             }
             if (Currlogintry >= Maxlogintry+1 && !tst)
             {
@@ -95,6 +96,16 @@ namespace Voorraadbeheer_Grafische
                 Naam_txt.Text = null;
                 Wachtwoor_txt.Text = null;
             }
+        }
+        private  void account_Setup()
+        {
+            for (int i = 0; i < DATA.Medewerkers.Count; i++)
+                if (DATA.LoginID == DATA.Medewerkers[i].ID)
+                {
+                    DATA.Medewerkers[i].LaatstIngelogd = DateTime.Today.ToShortDateString().ToString();
+                    DATA.Medewerkers[i].LaatstVersie = "Grafische";
+                    DATA.Save_Medewerkers(DATA.Medewerkers);
+                }
         }
 
         //events

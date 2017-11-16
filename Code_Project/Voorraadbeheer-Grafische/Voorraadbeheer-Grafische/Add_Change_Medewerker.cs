@@ -70,10 +70,10 @@ namespace Voorraadbeheer_Grafische
             "",
             ""));
 
+            DATA.Save_Medewerkers(DATA.Medewerkers);
             Admin frm2 = new Admin(DATA.LoginID);
             frm2.Show();
 
-            DATA.Save_Medewerkers(DATA.Medewerkers);
             this.Close();
         }
         private void setup(int id)
@@ -120,13 +120,11 @@ namespace Voorraadbeheer_Grafische
                     DATA.Medewerkers[i].Functie = DATA.Func(Functie_cb.Text);
                     DATA.Medewerkers[i].Geslacht = Geslacht_cb.Text;
 
-
+                    DATA.Save_Medewerkers(DATA.Medewerkers);
 
                     MessageBox.Show("Succesfully changed!");
                     Admin frm2 = new Admin(DATA.LoginID);
                     frm2.Show();
-
-                    DATA.Save_Medewerkers(DATA.Medewerkers);
                     this.Close();
                 }
         }

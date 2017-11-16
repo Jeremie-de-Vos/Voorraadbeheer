@@ -68,7 +68,7 @@
             this.Search_btn.Location = new System.Drawing.Point(225, 86);
             this.Search_btn.Name = "Search_btn";
             this.Search_btn.Size = new System.Drawing.Size(71, 24);
-            this.Search_btn.TabIndex = 14;
+            this.Search_btn.TabIndex = 2;
             this.Search_btn.Text = "Zoeken";
             this.Search_btn.UseVisualStyleBackColor = true;
             // 
@@ -78,7 +78,7 @@
             this.Searchbar_txt.Location = new System.Drawing.Point(36, 86);
             this.Searchbar_txt.Name = "Searchbar_txt";
             this.Searchbar_txt.Size = new System.Drawing.Size(183, 24);
-            this.Searchbar_txt.TabIndex = 13;
+            this.Searchbar_txt.TabIndex = 1;
             this.Searchbar_txt.TextChanged += new System.EventHandler(this.Searchbar_txt_TextChanged);
             // 
             // Loguit_btn
@@ -137,6 +137,7 @@
             this.Close_btn.Name = "Close_btn";
             this.Close_btn.Size = new System.Drawing.Size(45, 45);
             this.Close_btn.TabIndex = 12;
+            this.Close_btn.TabStop = false;
             this.Close_btn.UseVisualStyleBackColor = true;
             this.Close_btn.Click += new System.EventHandler(this.Close_btn_Click);
             // 
@@ -146,7 +147,7 @@
             this.Null_Voorraad_Checkbox.Location = new System.Drawing.Point(12, 134);
             this.Null_Voorraad_Checkbox.Name = "Null_Voorraad_Checkbox";
             this.Null_Voorraad_Checkbox.Size = new System.Drawing.Size(117, 21);
-            this.Null_Voorraad_Checkbox.TabIndex = 21;
+            this.Null_Voorraad_Checkbox.TabIndex = 3;
             this.Null_Voorraad_Checkbox.Text = "Null Voorraad";
             this.Null_Voorraad_Checkbox.UseVisualStyleBackColor = true;
             this.Null_Voorraad_Checkbox.CheckedChanged += new System.EventHandler(this.Null_Voorraad_Checkbox_CheckedChanged);
@@ -220,7 +221,7 @@
             this.Voorraad_txt.Location = new System.Drawing.Point(12, 210);
             this.Voorraad_txt.Name = "Voorraad_txt";
             this.Voorraad_txt.Size = new System.Drawing.Size(143, 22);
-            this.Voorraad_txt.TabIndex = 23;
+            this.Voorraad_txt.TabIndex = 4;
             this.Voorraad_txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Voorraad_txt_KeyDown);
             this.Voorraad_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Voorraad_txt_KeyPress);
             // 

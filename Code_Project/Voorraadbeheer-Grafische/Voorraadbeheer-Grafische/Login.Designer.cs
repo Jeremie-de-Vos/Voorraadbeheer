@@ -82,6 +82,7 @@
             this.Close_btn.Name = "Close_btn";
             this.Close_btn.Size = new System.Drawing.Size(45, 45);
             this.Close_btn.TabIndex = 1;
+            this.Close_btn.TabStop = false;
             this.Close_btn.UseVisualStyleBackColor = true;
             this.Close_btn.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -135,7 +136,7 @@
             this.Naam_txt.Location = new System.Drawing.Point(86, 181);
             this.Naam_txt.Name = "Naam_txt";
             this.Naam_txt.Size = new System.Drawing.Size(165, 26);
-            this.Naam_txt.TabIndex = 10;
+            this.Naam_txt.TabIndex = 1;
             // 
             // Wachtwoor_txt
             // 
@@ -144,7 +145,7 @@
             this.Wachtwoor_txt.Name = "Wachtwoor_txt";
             this.Wachtwoor_txt.PasswordChar = '*';
             this.Wachtwoor_txt.Size = new System.Drawing.Size(165, 26);
-            this.Wachtwoor_txt.TabIndex = 12;
+            this.Wachtwoor_txt.TabIndex = 2;
             // 
             // label4
             // 
@@ -161,7 +162,7 @@
             this.Login_btn.Location = new System.Drawing.Point(306, 292);
             this.Login_btn.Name = "Login_btn";
             this.Login_btn.Size = new System.Drawing.Size(117, 33);
-            this.Login_btn.TabIndex = 13;
+            this.Login_btn.TabIndex = 3;
             this.Login_btn.Text = "Login";
             this.Login_btn.UseVisualStyleBackColor = true;
             this.Login_btn.Click += new System.EventHandler(this.Login_btn_Click);
